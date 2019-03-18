@@ -1,0 +1,83 @@
+/* portmatrix-only style definitions */
+.matrix {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 15px;
+}
+.matrix tr td {
+	width: 15px;
+	height: 10px;
+	border-radius: 4px 4px 2px 2px;
+	transition: box-shadow 0.2s ease;
+}
+.connected {
+	border: 1px solid gray;
+	background-color: rgb(92, 184, 92);
+	cursor: pointer;
+}
+.notconnect {
+	border: 1px solid gray;
+	background-color: rgba(220, 220, 220, 0.9);
+	cursor: pointer;
+}
+.voip {
+	background-image: url("../img/voip-intmatrix.png");
+}
+.other {
+	border: 1px solid gray;
+	background-color: rgba(220, 220, 220, 0.9);
+	background-image: url("../img/disabled-intmatrix.png");
+	cursor: pointer;
+}
+
+.clickhint {
+	font-size: 90%;
+	opacity: 0.70;
+}
+
+.notconnect:hover, .connected:hover, .other:hover {
+	box-shadow: inset -2px -2px 8px rgba(255,255,255,0.45);
+}
+.notconnect:active, .connected:active, .other:active {
+	box-shadow: inset 2px 2px 10px rgba(0,0,0,0.7);
+}
+.none {
+	width: 15px;
+	height: 10px;
+}
+
+.connected.trunk {
+	background: linear-gradient(135deg, rgb(92, 184, 92) 40%, skyblue 60%);
+}
+.notconnect.trunk {
+	background: linear-gradient(135deg, rgba(220, 220, 220, 0.9) 30%, skyblue 70%);
+}
+
+.error-static {
+	background-color: rgb(230,0,0)
+}
+.error {
+	animation: error-blink 1s ease infinite;
+}
+@keyframes error-blink {
+	0% 		{ background-color: rgb(230,0,0); }
+	100% 	{ }
+}
+
+.portnumbers {
+	font-size: 70%;
+	color: rgb(190,190,190);
+}
+.portnumbers td.hidden {
+	color: transparent;
+}
+
+.legende > * {
+	font-size: 75%;
+	color: gray;
+	white-space: nowrap;
+
+	/* for disabled port */
+	background-size: 100% 100%;
+	background-position: 1px 0px;
+}

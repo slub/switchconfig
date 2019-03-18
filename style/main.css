@@ -1,0 +1,455 @@
+/*** Main ***/
+body, html {
+	height: 				100%;
+	margin: 				0px;
+}
+body {
+	font-family: 			"VisSansBook", "Segoe UI", "Roboto", "Ubuntu", sans-serif;
+	color: 					black;
+	margin: 				0px;
+	background: 			url('../img/bg.svg');
+	background-size: 		cover;
+	background-position: 	center;
+	background-attachment: 	fixed;
+	text-align: 			center;
+	font-size: 				16px;
+}
+body.loading {
+	/*cursor: progress;*/
+}
+
+.left {
+	float: 			left;
+}
+.center {
+	text-align: 	center;
+}
+.right {
+	float: 			right;
+}
+
+#imgContainer {
+	display: 		inline-block;
+	position: 		relative;
+	float: 			right;
+	width: 			90px;
+	min-height: 	47px;
+	margin-left: 	15px;
+	margin-bottom: 	15px;
+}
+#imgContainer > * {
+	position: 		absolute;
+	width: 			100%;
+}
+#imgLoading {
+	height: 		47px;
+	width: 			auto;
+	right: 			0px;
+	opacity: 		0; /* will be displayed via js */
+}
+
+/* Dialog Box */
+#loginsplash {
+	/*height: 280px;*/
+	width: 					480px;
+	padding: 				50px 60px;
+	border-radius: 			2px;
+	display: 				inline-block;
+	text-align: 			left;
+	position: 				relative;
+	background-color: 		rgba(232,247,243,0.5);
+	/*background-color Original: rgba(242,250,250, 0.65)*/
+	-webkit-box-shadow: 	0px 1px 3px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 		0px 1px 3px 0px rgba(0,0,0,0.2);
+	box-shadow: 			0px 1px 3px 0px rgba(0,0,0,0.2);
+	transition: 			filter 0.4s, transform 0.4s;
+}
+#loginsplash.out {
+	transform: 				scale(0.9);
+	filter: 				blur(4px);
+}
+#loginsplash.big {
+	width: 					650px;
+}
+#splashloading {
+	width: 			180px;
+	height: 		180px;
+	margin-top: 	-40px;
+	margin-left: 	-90px;
+	position: 		absolute;
+	top: 			50%;
+	left: 			50%;
+	z-index: 		999;
+	visibility: 	collapse;
+}
+#splashloading.load {
+	visibility: 	visible;
+}
+
+/* Title (Logo) & Subtitle */
+#title {
+	text-align: 	left;
+}
+#logo {
+	width: 				100%;
+	height: 			71px;
+	background-image: 	url('../img/logo.svg');
+	background-size: 	contain;
+	background-position: left;
+	background-repeat: 	no-repeat;
+}
+#subtitle {
+	line-height: 	1.4em;
+	margin-bottom: 	25px;
+	text-align: 	justify;
+}
+#subtitle > *:first-child {
+	margin-top: 	0px;
+}
+h1, h2, h3, h4 {
+	text-align: 	left;
+	line-height: 	normal;
+}
+
+/* Login Form */
+#logincontainer {
+	margin-top: 	100px;
+	margin-bottom: 	25px;
+	display: 		inline-block;
+	position: 		relative;
+}
+#loginsplash form {
+	position: 		relative;
+}
+#loginsplash .bottommargin {
+	margin-bottom: 	10px;
+}
+#loginsplash .fullwidth {
+	width: 			100%;
+}
+#loginsplash form .multirow {
+	display: 		flex;
+	flex-direction: row;
+}
+#loginsplash form .multirow > * {
+	flex-grow: 		1;
+	position: 		relative;
+}
+#loginsplash form .multirow > * > input,
+#loginsplash form .multirow > * > select {
+	width: 			100%;
+}
+#loginsplash form .multirow > *:not(:last-child) {
+	margin-right: 	10px;
+}
+hr {
+	margin: 15px 0px;
+}
+
+
+/* Link */
+a {
+	text-decoration: 	none;
+	color: 				#00afc8;
+	cursor: 			pointer;
+}
+a:hover {
+	text-decoration: 	underline;
+}
+.cursorhelp {
+	cursor: 			help;
+}
+a.document {
+	font-style: 		italic;
+}
+
+
+/*** Buttons ***/
+.slubbutton {
+	display: 			inline-block;
+	font-family: 		"VisSansBold", "Segoe UI", "Roboto", "Ubuntu", sans-serif;
+	min-width: 			120px;
+	padding: 			10px 10px;
+	text-align: 		center;
+	text-transform: 	uppercase;
+	cursor: 			pointer;
+	background-color: 	#00afc8;
+	color: 				#FFFFFF;
+	border: 			1px solid #87cdd7;
+	border-bottom: 		3px solid #87cdd7;
+	font-size: 			inherit;
+}
+.slubbutton:hover {
+	background-color: 	#87cdd7;
+	color: 				#FFFFFF;
+	border: 			1px solid #00afc8;
+	border-bottom: 		3px solid #00afc8;
+}
+.slubbutton:not(.blink):focus {
+	outline: 			2px dashed #cc0000;
+	outline-offset: 	2px;
+}
+.slubbutton.secondary {
+	background-color: 	#f2fafa;
+	color: 				#00afc8;
+	border: 			1px solid #00afc8;
+	border-bottom: 		3px solid #00afc8;
+}
+.slubbutton.secondary:hover {
+	background-color: 	#87cdd7;
+	color: 				#FFFFFF;
+}
+.slubbutton.destructive {
+	background-color: 	#FFFFFF;
+	color: 				#cc0000;
+	border: 			1px solid #cc0000;
+	border-bottom: 		3px solid #cc0000;
+}
+.slubbutton.destructive:hover {
+	background-color: 	#cc0000;
+	color: 				#FFFFFF;
+}
+.slubbutton[disabled] {
+	background-color: 	#f2fafa;
+	color: 				#87cdd7;
+	cursor: 			default;
+	border: 			1px solid #87cdd7;
+	border-bottom: 		3px solid #87cdd7;
+	pointer-events: 	none;
+}
+a.slubbutton {
+	text-decoration: 	none;
+}
+.slubbutton.blink {
+	outline: 			10px solid rgb(230,0,0); outline-offset: 10px;
+	animation: 			slubbutton-blink 1s infinite;
+}
+@keyframes slubbutton-blink {
+	0% { outline: 10px solid rgb(230,0,0); outline-offset: 2px; }
+	75% { outline: 5px solid transparent; outline-offset: 20px; }
+	100% { outline: 5px solid transparent; outline-offset: 20px; }
+}
+
+#topmenu {
+	position: 	fixed;
+	top: 		0px;
+	right: 		0px;
+	left: 		0px;
+	padding: 	10px;
+}
+#footer {
+	margin-top: 		10px;
+	display: 			flex;
+	flex-direction: 	row;
+	flex-wrap: 			nowrap;
+	justify-content: 	space-between;
+	align-items: 		center;
+}
+#footer .version {
+	font-weight: bold;
+}
+#footer > *:first-child {
+	text-align: left;
+}
+#footer > *:last-child {
+	text-align: right;
+}
+
+.toolbar-margin-top {
+	margin-top: 15px;
+}
+.spread-toolbar {
+	display: 			flex;
+	flex-direction: 	row;
+	flex-wrap: 			nowrap;
+	justify-content: 	space-between;
+	align-items: 		center;
+}
+.stretched-toolbar {
+	display: 			flex;
+	flex-direction: 	row;
+	flex-wrap: 			nowrap;
+	justify-content: 	space-between;
+	align-items: 		center;
+}
+.stretched-toolbar > * {
+	flex-grow: 			1;
+}
+.stretched-toolbar > *:not(:last-child) {
+	margin-right: 		10px;
+}
+
+#sshDebugOutput {
+	display: 			none;
+}
+
+.easteregg-trigger {
+	cursor: url('../img/alert.png') 24 24, pointer;
+}
+
+/* Textbox; Input general */
+input[type=submit].slubbutton {
+	margin-bottom: 			10px;
+	-webkit-appearance: 	none;
+	-moz-appearance: 		none;
+	appearance: 			none;
+}
+textarea, select, input[type=text], input[type=password], input[type=number] {
+	box-sizing: 			border-box;
+	color: 					black;
+	background-color: 		white;
+	padding: 				10px;
+	font-family: 			inherit;
+	font-size: 				inherit;
+	border-radius: 			0px;
+	outline: 				none;
+	border: 				2px solid #87cdd7;
+	-webkit-appearance: 	none;
+	-moz-appearance: 		none;
+	appearance: 			none;
+}
+textarea {
+	font-family: 			monospace;
+}
+textarea:active, select:active, input[type=text]:active, input[type="password"]:active, input[type="email"]:active,
+textarea:focus, select:focus, input[type=text]:focus, input[type="password"]:focus, input[type="email"]:focus {
+	border: 				2px solid #00afc8;
+}
+input[type=text].valid, input[type="password"].valid, input[type="email"].valid {
+	color: 					#009900;
+	border: 				2px solid #009900;
+}
+input[type=text].error, input[type="password"].error, input[type="email"].error {
+	color: 				#cc0000;
+	border: 				2px solid #cc0000;
+}
+textarea[disabled], select[disabled],
+input[disabled]:not(.error):not(.warn):not(.info):not(.ok) {
+	background-color: 	#f2fafa;
+	color: 				#87cdd7;
+	border-color: 		#87cdd7;
+	pointer-events: 	none;
+	cursor: 			default;
+}
+
+#logintable td {
+	position: 			relative;
+}
+#username_icon {
+	position: 			absolute;
+	top: 				13px; right: 13px;
+}
+#password_icon {
+	position: 			absolute;
+	top: 				13px; right: 13px;
+}
+.dropdownarrow {
+	position: 			absolute;
+	top: 				12px; right: 12px;
+	pointer-events: 	none;
+}
+.tip {
+	color: 				rgb(150,150,150);
+	position: 			absolute;
+	top: 				13px; right: 30px;
+	pointer-events: 	none;
+}
+.tipicon {
+	position: 			absolute;
+	top: 				12px; right: 83px;
+	opacity: 			0.75;
+}
+.hand {
+	cursor: 			pointer;
+}
+
+
+/*** Tooltip ***/
+/* Tooltip container */
+.tooltip {
+	position: relative;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+	/*visibility: 		hidden;*/
+	width: 				280px;
+	background-color: 	rgba(0,175,200,0.95);
+	box-shadow: 		0px 0px 15px rgba(0,0,0,0.3);
+	color: 				white;
+	text-align: 		center;
+	padding: 			8px;
+	border-radius: 		4px;
+	box-sizing: 		border-box;
+
+	/* Position the tooltip text */
+	position: 			absolute;
+	z-index: 			1;
+	bottom: 			110%;
+	left: 				50%;
+	margin-left: 		-140px;
+
+	/* Fade in tooltip */
+	opacity: 			0;
+	transition: 		opacity 0.3s ease, bottom 0.3s ease;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+	content: 			"";
+	position: 			absolute;
+	top: 				100%;
+	left: 				50%;
+	margin-left: 		-5px;
+	border-width: 		5px;
+	border-style: 		solid;
+	border-color: 		rgba(0,175,200,0.95) transparent transparent transparent;
+}
+
+.tooltip .tooltiptext > *, .tooltip .tooltiptext {
+	pointer-events: 	none;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+	/*visibility: 		visible;*/
+	opacity: 			1;
+	bottom: 			125%;
+}
+
+
+/*** for mobile devices ***/
+@media only screen and (max-width: 620px) {
+	html, body {
+		font-size: 12px;
+	}
+	#logo {
+		width: 100%;
+		height: 50px;
+		background-position: center;
+	}
+	#logincontainer,
+	#loginsplash {
+		box-sizing: border-box;
+		width: 100%;
+	}
+	#logincontainer {
+		margin-top: 70px;
+	}
+	#loginsplash {
+		padding: 15px 10px;
+	}
+	.slubbutton {
+		min-width: 75px;
+	}
+	#function_intstatuslist,
+	#function_intmatrix,
+	#function_search {
+		display: block;
+		float: none;
+	}
+	.tipicon {
+		top: 10px;
+		right: 70px;
+	}
+}

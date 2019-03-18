@@ -1,0 +1,46 @@
+/* index.php-only style definitions */
+.pulse {
+	animation: pulse 4s ease-in-out;
+}
+@keyframes pulse {
+	00% { transform: scale(0.86); }
+	15% { transform: scale(1.15); }
+	25% { transform: scale(0.90); }
+	35% { transform: scale(1.12); }
+	45% { transform: scale(0.92); }
+	55% { transform: scale(1.10); }
+	65% { transform: scale(1.00); }
+}
+
+img[src="img/disabled.svg"] {
+	animation: blink 3s ease-in-out;
+}
+@keyframes blink {
+	00% { opacity: 0.1; }
+	10% { opacity: 1.0; }
+	20% { opacity: 0.1; }
+	30% { opacity: 1.0; }
+	40% { opacity: 0.1; }
+	50% { opacity: 1.0; }
+	60% { opacity: 0.1; }
+	70% { opacity: 1.0; }
+	80% { opacity: 0.1; }
+	90% { opacity: 1.0; }
+}
+
+.demoStatusIcon {
+	display: table;
+}
+.demoStatusIcon:not(:last-child) {
+	margin-bottom: 5px;
+}
+.demoStatusIcon > img {
+	display: table-cell;
+	vertical-align: middle;
+	background-color: rgba(255,255,255,1);
+	border-radius: 4px;
+}
+.demoStatusIcon > span {
+	display: table-cell;
+	vertical-align: middle;
+}

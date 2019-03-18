@@ -1,0 +1,110 @@
+<?php
+/*** CONFIG-FILE FOR THE SWITCH-CONFIG WEB APP ***/
+
+/***
+# MANUAL: HOW TO USE THE MAIN CONFIG ARRAYS #
+#
+# const SWITCHES = [
+# 	[
+# 		'addr'  => '10.1.2.3',                 # The address of your switch. Can be an IP-Adress or DNS name. Also used as identifier - it has to be unique.
+# 		'name'  => 'demoswitch - Room 3.400',  # Name or description of your Switch, may contains additional information like room number etc.
+# 		'group' => 'Group 1',                  # Set a group name, e.g. 'Floor 1'.
+# 	],
+# 	... more switch entries here ...
+# ];
+#
+# const VISIBLE_VLAN = [
+# 	['id' => 'disabled', 'name' => '[--]  DISABLED'],   # keep this special entry (disables the port if selected in the web interface)
+# 	['id' => 1, 'name' => '[01]  MyVlanDescription'],   # replace with your own VLANs
+# 	['id' => 10, 'name' => '[10]  MyVlanDescription'],  # 'id' has to be the exact VLAN id like on the switches; 'name' can be anything you like
+# 	... more VLAN entries here ...
+# ];
+#
+# const MAPS = [
+# 	[
+# 		"name" => "e_0",                       # A short name for this map, used internal only, e.g. in URLs.
+# 		"displayname" => "Third Floor",        # The name of this map, displayed to the user.
+# 		"img" => "maps/floor_0.png",           # The background image for this map (relative to index.php or absolute path to another webserver, beginning with http://...).
+# 		"items" => [                           # Contains the switches, which should be displayed on this map.
+# 			[ "switch" => "demoswitch",        # The name of the switch, exactly as defined in the const SWITCHES array (field 'addr').
+# 			  "x" => "2105", "y" => "105" ],   # X and Y coordinates for the button on the map for this switch.
+# 			... more switches for this map here ...
+# 		],
+# 		... more map entries here ...
+# 	]
+# ];
+***/
+
+
+/*** DEMO CONFIGURATION ***/
+
+// enable or disable the password change feature (experimental)
+const ENABLE_PASSWORD_CHANGE = false; #(true|false)
+
+// decide if "wr mem" should be executed on the switch after each save procedure (this could take some seconds)
+const DO_WR_MEM = true; #(true|false)
+
+// decide if POE should be enabled/disabled on the switchport (depending on VoIP selection)
+const DO_SET_POE = false; #(true|false)
+
+// define the voice vlan (will be set if the user enables VoIP on the switchport)
+// set it to -1 if you don't want to assign VoIP options to the switchport
+const VOICE_VLAN = -1; # TODO: replace with your voice VLAN ID number
+
+// hint to show on mouse hover on the port description field
+const PORT_DESCRIPTION_HINT = '';
+
+// defines all on the webinterface visible VLANs
+const VISIBLE_VLAN = [
+	['id' => 'disabled', 'name' => '[----]  DISABLED'], # special entry: disables the port
+	['id' => 1, 'name' => '[01]  MyVLAN 1'], # TODO: replace with your own VLAN
+	['id' => 2, 'name' => '[02]  MyVLAN 2'], # TODO: replace with your own VLAN
+	/* ... */
+];
+
+// defines all on the webinterface visible switches
+const SWITCHES = [ # TODO: insert your own switches and remove the examples
+	[
+		'addr'  => 'switch_ga1',
+		'name'  => 'switch_ga1 - 1. Etage - Raum 1.11',
+		'group' => 'House A',
+	],
+	[
+		'addr'  => 'switch_ga2',
+		'name'  => 'switch_ga2 - 2. Etage - Raum 2.11',
+		'group' => 'House A',
+	],
+	[##################################################
+		'addr'  => 'switch_gb2',
+		'name'  => 'switch_gb2 - 1. Etage - Raum 1.14',
+		'group' => 'House B',
+	],
+	/* ... */
+];
+
+// defines the maps and it's items with their positions
+const MAPS = [ # TODO: remove the examples and (optional) create your own maps
+	[
+		"name" => "map_gebaeude_a",
+		"displayname" => "Haus A",
+		"img" => "maps/haus_a.png",
+		"items" => [
+			[ "switch" => "switch_ga1",
+			  "x" => "480", "y" => "190" ],
+			[ "switch" => "switch_ga2",
+			  "x" => "530", "y" => "512" ],
+			/* ... */
+		]
+	],
+	[
+		"name" => "map_gebaeude_b",
+		"displayname" => "Haus B",
+		"img" => "maps/haus_b.png",
+		"items" => [
+			[ "switch" => "switch_gb1",
+			  "x" => "1515", "y" => "270" ],
+			/* ... */
+		]
+	],
+	/* ... */
+];
