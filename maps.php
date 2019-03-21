@@ -25,7 +25,7 @@ require_once('lang.php');
 <?php
 	foreach(MAPS as $currentmap) {
 		if($currentmap['name'] == $_GET['map']) {
-			echo "<img src='" . $currentmap['img'] . "' draggable='false' ondragstart='return false;'></img>";
+			echo "<img src='map.php?img=".$currentmap['img']."' draggable='false' ondragstart='return false;'></img>";
 			foreach($currentmap['items'] as $item) {
 				// get additional details for popup
 				$cSwitch = getSwitchByAddr($item['switch']);
