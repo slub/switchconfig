@@ -11,6 +11,6 @@
 	<div>
 	</div>
 	<div>
-		<span class='version'>v2.0</span>
+		<span class='version'>v2.1</span>
 	</div>
 </div>

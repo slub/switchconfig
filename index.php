@@ -133,7 +133,13 @@ if($cSwitch != null) {
 			<div id='subtitle'>
 				<div id='imgContainer'>
 					<img id='imgLoading' src='img/loading.svg'></img>
-					<img id='imgSwitch' src='img/switch.png' class='easteregg-trigger' onclick='boom()' title='initiate self destruction'></img>
+
+					<?php if($infoClass == 'ok') { ?>
+						<img id='imgSwitch' src='img/switch.png' class='easteregg-trigger delayIn' onclick='boom()' title='initiate self destruction'></img>
+						<img id='imgTick' class='delayOut' src='img/tick_anim.svg'></img>
+					<?php } else { ?>
+						<img id='imgSwitch' src='img/switch.png' class='easteregg-trigger' onclick='boom()' title='initiate self destruction'></img>
+					<?php } ?>
 				</div>
 				<?php translate('This web application allows you to configure Cisco switches through a graphical interface.'); ?>
 			</div>

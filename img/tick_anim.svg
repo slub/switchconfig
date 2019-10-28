@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="47px"
+   height="47px"
+   viewBox="0 0 21 21"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="tick.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="185.05885"
+     inkscape:cy="194.14363"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1170"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(2,8) rotate(45)">
+    <rect
+       style="opacity:1;fill:rgb(0,175,200);fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect815"
+	   ry="1.5"
+       width="0"
+       height="3"
+       x="0"
+       y="0">
+	   <animate
+      attributeName="width"
+	  fill="freeze"
+	  calcMode="spline" keySplines="0.42 0 1 1" keyTimes="0;1"
+      begin="0.2s" dur="0.4s"
+	  values="0;11" />
+	</rect>
+  </g>
+  <g
+	 inkscape:label="Ebene 2"
+	 inkscape:groupmode="layer"
+	 id="layer2"
+	 transform="translate(6,16) rotate(-45)">
+  <rect
+	 style="opacity:1;fill:rgb(0,175,200);fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+	 id="rect816"
+	 ry="1.5"
+	 width="0"
+	 height="3"
+	 x="0"
+	 y="0">
+	 <animate
+	attributeName="width"
+	fill="freeze"
+	calcMode="spline" keySplines="0 0 0.58 1" keyTimes="0;1"
+	begin="0.6s" dur="0.4s"
+	values="0;18" />
+  </rect>
+  </g>
+</svg>

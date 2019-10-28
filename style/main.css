@@ -41,11 +41,29 @@ body.loading {
 	position: 		absolute;
 	width: 			100%;
 }
-#imgLoading {
+#imgLoading, #imgTick {
 	height: 		47px;
 	width: 			auto;
 	right: 			0px;
+}
+#imgLoading {
 	opacity: 		0; /* will be displayed via js */
+}
+.delayOut {
+	opacity: 		1;
+	animation: 		delayOut 0.3s ease 2s 1 forwards;
+}
+.delayIn {
+	opacity: 		0;
+	animation: 		delayIn 0.3s ease 2.3s 1 forwards;
+}
+@keyframes delayIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+@keyframes delayOut {
+	0% { opacity: 1; }
+	100% { opacity: 0; }
 }
 
 /* Dialog Box */
