@@ -52,17 +52,13 @@ if(isset($_GET['switch']) && $_GET['switch'] != "") {
 				<tr><td>
 
 <?php
-	if ($cSwitch != null) {
+	if($cSwitch != null) {
 
-		if (isset($_GET['view']) && $_GET['view'] == "raw") {
-			$connection = ssh2_connect($cSwitch['addr'], 22);
-			ssh2_auth_password($connection, $_SESSION['username'], $_SESSION['password']);
-			$stream = ssh2_exec($connection, 'show int status');
-			stream_set_blocking($stream, true);
+		if(isset($_GET['view']) && $_GET['view'] == "raw") {
 
-			echo "<textarea id='intstatustext' wrap='off' readonly='true'>" . @stream_get_contents($stream) . "</textarea>";
+			$result = executeRawCommand($cSwitch['addr'], 'show int status');
+			echo "<textarea id='intstatustext' wrap='off' readonly='true'>" .htmlspecialchars($result) . "</textarea>";
 
-			fclose($stream);
 		} else {
 			echo "<div id='intstatuslistcontainer'><table id='intstatuslist'>\n";
 

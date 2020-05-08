@@ -169,3 +169,28 @@ function setValues($switch, $switchport, $vlan, $desc, $voip) {
 	stream_set_blocking($stdio_stream, true); // wait until command executed
 	return stream_get_contents($stdio_stream);
 }
+
+function executeRawCommand($switch, $cmd) {
+	$connection = ssh2_connect($switch, 22);
+	ssh2_auth_password($connection, $_SESSION['username'], $_SESSION['password']);
+
+	$stream = ssh2_exec($connection, $cmd);
+	stream_set_blocking($stream, true);
+	$result = stream_get_contents($stream);
+
+	fclose($stream);
+	return $result;
+}
+
+function executeRawShell($switch, $cmd) {
+	$connection = ssh2_connect($switch, 22);
+	ssh2_auth_password($connection, $_SESSION['username'], $_SESSION['password']);
+
+	$stream = ssh2_shell($connection, 'vanilla', null, 1000, 10000, SSH2_TERM_UNIT_CHARS);
+	fwrite($stream, $cmd . "\n" . 'exit' . "\n");
+	stream_set_blocking($stream, true);
+	$result = stream_get_contents($stream);
+
+	fclose($stream);
+	return $result;
+}

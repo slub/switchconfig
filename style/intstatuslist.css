@@ -1,7 +1,8 @@
 /* interface-status-list-only style definitions */
 textarea#intstatustext {
-	width: calc(100% - 24px);
+	width: 100%;
 	height: 500px;
+	font-size: 90%;
 }
 div#intstatuslistcontainer {
 	max-height: 550px;
@@ -42,4 +43,7 @@ table#intstatuslist a {
 }
 table#intstatuslist a:hover {
 	text-decoration: none;
+}
+img.smallimg {
+	width: 24px;
 }
