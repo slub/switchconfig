@@ -61,13 +61,13 @@ if(isset($_GET['refreshtableonly']) && $_GET['refreshtableonly'] == "1")
 			$onclickevent = "onclick=\"beginFadeOutAnimation(); window.location.href='index.php?switch=".urlencode($sAddr)."&port=" . urlencode($port) . "'\"";
 
 			// set css class "error" if errors were reported
-			$title = translate("Packet Error Information (since last reboot):",false) . str_replace("<br>", "\n", htmlspecialchars($portInfo['errt']));
+			$title = translate("Packet Error Information (since last reboot):",false) . htmlspecialchars($portInfo['errt']);
 			$htmlclass_additional = "";
 			$errorinfo = "";
 			if($portInfo['errs'] == true) {
 				$nIoError ++;
 				$htmlclass_additional .= " error";
-				$errorinfo = "<br>".translate("Packet Errors - Check Cable!",false)."<br><small>" . htmlspecialchars($portInfo['errt']) . "</small>";
+				$errorinfo = "<br>".translate("Packet Errors - Check Cable!",false)."<br><small>" . str_replace("\n", "<br>", htmlspecialchars($portInfo['errt'])) . "</small>";
 			}
 
 			// set css class "trunk" if port is an trunk port

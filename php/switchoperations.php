@@ -40,7 +40,7 @@ function getAllPortsOnSwitch($switch, $fullinfo = true, $voiceinfo = false) {
 
 	// parse ssh output
 	foreach(explode("\n", $sh_int_status) as $if_line) {
-		if (trim($if_line) != ""  // ignore empty lines
+		if(trim($if_line) != ""  // ignore empty lines
 		&& startsWith($if_line, "Port") == false)  // ignore table head line
 		{
 			$_newport['port'] = trim(substr($if_line, 00, 10));
@@ -59,31 +59,31 @@ function getAllPortsOnSwitch($switch, $fullinfo = true, $voiceinfo = false) {
 			$currentport = "";
 			foreach(explode("\n", $sh_int_detail) as $if_line2) {
 				// new interface section starting
-				if (!startsWith($if_line2, " "))
+				if(!startsWith($if_line2, " "))
 				$currentport = explode(" ", $if_line2)[0];
 
 				// if we are in the section of our current interface
-				if ($currentport == $_newport['port'] || $currentport == $_newport['altn']) {
+				if($currentport == $_newport['port'] || $currentport == $_newport['altn']) {
 
 					// get full description
-					if (startsWith($if_line2, "  Description:"))
+					if(startsWith($if_line2, "  Description:"))
 					$_newport['desc'] = str_replace("  Description: ", "", $if_line2);
 
 					// line conatins reliability information
-					if (strpos($if_line2, "reliability") !== false) {
+					if(strpos($if_line2, "reliability") !== false) {
 						$rel_text = trim(explode(",", $if_line2)[0]);
 						$rel_values = explode(" ", $rel_text)[1];
 						$rel_curr = explode("/", $rel_values) [0];
 
 						if($rel_curr != 255) { // errors exist if reliability lower than 255
 							$_newport['errs'] = true;
-							$_newport['errt'] .= "<br>" . trim($if_line2);
+							$_newport['errt'] .= "\n" . trim($if_line2);
 						}
 					}
 
 					// line conatins error information
-					if (strpos($if_line2, "error") !== false) {
-						$_newport['errt'] .= "<br>" . trim($if_line2);
+					if(strpos($if_line2, "error") !== false) {
+						$_newport['errt'] .= "\n" . trim($if_line2);
 					}
 				}
 			}
@@ -92,14 +92,14 @@ function getAllPortsOnSwitch($switch, $fullinfo = true, $voiceinfo = false) {
 			$currentport = "";
 			foreach(explode("\n", $sh_int_switchport) as $if_line2) {
 				// new interface section starting
-				if (startsWith($if_line2, "Name: "))
+				if(startsWith($if_line2, "Name: "))
 				$currentport = trim(str_replace("Name: ", "", $if_line2));
 
 				// if we are in the section of our current interface
-				if ($currentport == $_newport['port'] || $currentport == $_newport['altn']) {
+				if($currentport == $_newport['port'] || $currentport == $_newport['altn']) {
 
 					// get full description
-					if (startsWith($if_line2, "Voice VLAN: "))
+					if(startsWith($if_line2, "Voice VLAN: "))
 					$_newport['voip'] = trim(str_replace(["Voice VLAN: ", "(default)"], "", $if_line2));
 
 				}
@@ -187,7 +187,7 @@ function executeRawShell($switch, $cmd) {
 	ssh2_auth_password($connection, $_SESSION['username'], $_SESSION['password']);
 
 	$stream = ssh2_shell($connection, 'vanilla', null, 1000, 10000, SSH2_TERM_UNIT_CHARS);
-	fwrite($stream, $cmd . "\n" . 'exit' . "\n");
+	fwrite($stream, $cmd);
 	stream_set_blocking($stream, true);
 	$result = stream_get_contents($stream);
 
