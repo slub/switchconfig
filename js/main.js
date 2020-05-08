@@ -23,11 +23,3 @@ function getCookie(name) {
 function eraseCookie(name) {
 	document.cookie = name+'=; Max-Age=-99999999;';
 }
-
-function toggleDarkMode() {
-	if(getCookie('design') == 'dark')
-		eraseCookie('design');
-	else
-		setCookie('design','dark',9999);
-	goto('index.php');
-}

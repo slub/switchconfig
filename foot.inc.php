@@ -4,8 +4,6 @@
 		|
 		<a href="docs/Changelog.txt" target="_blank">Changelog</a>
 		|
-		<a href='#' onclick='toggleDarkMode()'>Dark Mode</a>
-		|
 		<a href="mailto:georg.sieber@slub-dresden.de">?</a>
 	</div>
 	<div>
