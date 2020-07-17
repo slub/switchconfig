@@ -15,6 +15,15 @@ function getSwitchByAddr($addr) {
 	return null;
 }
 
+function getSnippetById($id) {
+	foreach(SNIPPETS as $s) {
+		if($s['id'] == $id) {
+			return $s;
+		}
+	}
+	return null;
+}
+
 function removeInvalidChars($string) {
 	// this function removes chars which cannot be set as port description on the switch
 	// replace german umlauts

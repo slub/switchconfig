@@ -15,7 +15,7 @@ body {
 	font-size: 				16px;
 }
 body.loading {
-	/*cursor: progress;*/
+	cursor: 		progress;
 }
 
 .left {
@@ -68,7 +68,6 @@ body.loading {
 
 /* Dialog Box */
 #loginsplash {
-	/*height: 280px;*/
 	width: 					480px;
 	padding: 				50px 60px;
 	border-radius: 			2px;
@@ -227,7 +226,7 @@ a.document {
 	background-color: 	#cc0000;
 	color: 				#FFFFFF;
 }
-.slubbutton[disabled] {
+.slubbutton[disabled], .slubbutton.disabled {
 	background-color: 	#f2fafa;
 	color: 				#87cdd7;
 	cursor: 			default;
@@ -284,6 +283,7 @@ a.slubbutton {
 	align-items: 		center;
 }
 .stretched-toolbar {
+	position: 			relative;
 	display: 			flex;
 	flex-direction: 	row;
 	flex-wrap: 			nowrap;
@@ -292,9 +292,35 @@ a.slubbutton {
 }
 .stretched-toolbar > * {
 	flex-grow: 			1;
+	width: 				30%;
 }
 .stretched-toolbar > *:not(:last-child) {
 	margin-right: 		10px;
+}
+#function_more > #function_more_container {
+	display: 			none;
+	position: 			absolute;
+	bottom: 			40px;
+	right: 				0px;
+	left: 				70px;
+	padding: 			35px;
+	border-radius: 		2px;
+	background-color: 	rgba(232,247,243,1);
+	-webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
+	-moz-box-shadow: 	0px 1px 5px 0px rgba(0,0,0,0.4);
+	box-shadow: 		0px 1px 5px 0px rgba(0,0,0,0.4);
+}
+#function_more:hover > #function_more_container,
+#function_more:focus > #function_more_container,
+#function_more:active > #function_more_container {
+	display: 			block;
+}
+#function_more > #function_more_container > * {
+	width: 				100%;
+	box-sizing: 		border-box;
+}
+#function_more > #function_more_container > *:not(:last-child) {
+	margin-bottom: 		10px;
 }
 
 #sshDebugOutput {
@@ -303,6 +329,10 @@ a.slubbutton {
 
 .easteregg-trigger {
 	cursor: url('../img/alert.png') 24 24, pointer;
+}
+
+.marginbottom {
+	margin-bottom: 10px;
 }
 
 /* Textbox; Input general */

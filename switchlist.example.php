@@ -62,6 +62,35 @@ const VISIBLE_VLAN = [
 	/* ... */
 ];
 
+// define command snippets
+// scope port   : will be executed in port context - %PORT% is replaced with the selected port name
+// scope switch : will be executed in switch context
+// users        : array with usernames which can execute this snippet or null
+const SNIPPETS = [
+	/*
+	[
+		'scope' => 'port',
+		'id'    => 'wifi-setup',
+		'name'  => 'Setup Port for WiFi Access Point',
+		'users' => ['user1', 'user2'],
+		'cmd'   => 'conf t'."\n".
+				   'int %PORT%'."\n".
+				   'description WIFI AP'."\n".
+				   'switchport mode access'."\n".
+				   'switchport access vlan 999'."\n".
+				   'end'."\n".
+				   'wr mem'."\n"
+	],
+	[
+		'scope' => 'switch',
+		'id'    => 'powerstate',
+		'name'  => 'Show PoE-State',
+		'users' => null,
+		'cmd'   => 'sh power inline'."\n"
+	]
+	*/
+];
+
 // defines all on the webinterface visible switches
 const SWITCHES = [ # TODO: insert your own switches and remove the examples
 	[

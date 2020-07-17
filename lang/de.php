@@ -72,3 +72,10 @@ $_LANG['This page shows all ports and packet errors, arranged as on the device.'
 $_LANG['Internet Explorer and Microsoft Edge are not supportet.'] = 'Internet Explorer und Microsoft Edge werden nicht unterstützt.';
 $_LANG['This page provides a table overview for all ports with their settings.'] = 'Diese Ansicht bietet Ihnen einen tabellarischen Überblick über alle Ports mit deren Konfiguration und Status.';
 $_LANG['Please click on a button to open the map with the switches.'] = 'Klicken Sie auf einen Kartennamen, um die Karte mit den Switchen zu öffnen.';
+$_LANG['Port-Snippet cannot be executed because no port name was given'] = 'Port-Snippet kann nicht ausgeführt werden, da kein Port-Name angegeben wurde.';
+$_LANG['Snippet executed'] = 'Snippet ausgeführt';
+$_LANG['You are not allowed to run this snippet.'] = 'Sie sind nicht berechtigt dieses Snippet auszuführen.';
+$_LANG['Snippets'] = 'Snippets';
+$_LANG['Send pre-defined commands to your switch.'] = 'Senden Sie vordefinierte Kommandos an Ihren Switch.';
+$_LANG['Execute Another Snippet'] = 'Weiteres Snippet ausführen';
+$_LANG['More'] = 'Mehr';
