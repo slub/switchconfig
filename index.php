@@ -99,6 +99,7 @@ if($cSwitch != null) {
 	<script>
 	function beginFadeOutAnimation() {
 		document.body.classList.add('loading');
+		document.getElementById('imgSwitch').classList.remove('delayIn');
 		document.getElementById('imgSwitch').style.opacity = 0;
 		document.getElementById('imgLoading').style.opacity = 1;
 		document.getElementById('submit_changeform').innerHTML = "<?php translate('Please wait...'); ?>";
