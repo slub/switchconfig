@@ -57,7 +57,7 @@ function getAllPortsOnSwitch($switch, $fullinfo = true, $voiceinfo = false) {
 
 			// get details from second command
 			$currentport = "";
-			foreach(explode("\n", $sh_int_detail) as $if_line2) {
+			if(!empty($sh_int_detail)) foreach(explode("\n", $sh_int_detail) as $if_line2) {
 				// new interface section starting
 				if(!startsWith($if_line2, " "))
 				$currentport = explode(" ", $if_line2)[0];
@@ -90,7 +90,7 @@ function getAllPortsOnSwitch($switch, $fullinfo = true, $voiceinfo = false) {
 
 			// get more details from third command
 			$currentport = "";
-			foreach(explode("\n", $sh_int_switchport) as $if_line2) {
+			if(!empty($sh_int_switchport)) foreach(explode("\n", $sh_int_switchport) as $if_line2) {
 				// new interface section starting
 				if(startsWith($if_line2, "Name: "))
 				$currentport = trim(str_replace("Name: ", "", $if_line2));
