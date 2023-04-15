@@ -1,3 +1,6 @@
+Version 2.2.0.0 [Sieber] [04/2023]
+- SLUB webdesign-template implemented
+
 Version 2.1.0.0 [Sieber] [05/2020]
 - command snippets
 - native dark mode (via CSS media query "prefers-color-scheme")

@@ -58,9 +58,9 @@ if($cSwitch != null && $cSnippet != null) {
 <head>
 	<title><?php translate('Snippets'); ?> - <?php translate('Switchconfig'); ?></title>
 	<?php require('head.inc.php'); ?>
-	<link rel='stylesheet' type='text/css' href='style/intstatuslist.css'>
+	<link rel='stylesheet' type='text/css' href='css/intstatuslist.css'>
 </head>
-<body onLoad='self.focus();'>
+<body>
 	<script>
 	function beginFadeOutAnimation() {
 		document.getElementById('imgSwitch').style.opacity = 0;
@@ -75,20 +75,20 @@ if($cSwitch != null && $cSnippet != null) {
 	}
 	</script>
 
-	<div id='logincontainer'>
+	<div id='container'>
 		<h1 id='title'><div id='logo'></div></h1>
 
-		<div id='loginsplash' <?php if($cmdResponse !== null) { ?>class='big'<?php } ?>>
+		<div id='splash' <?php if($cmdResponse !== null) { ?>class='big'<?php } ?>>
+			<?php if($cSwitch != null) { ?>
+				<h2>
+					<?php echo $cSwitch['name']; ?>
+					<?php if(!empty($port)) echo "<br>".htmlspecialchars($port); ?>
+				</h2>
+			<?php } else { ?>
+				<div class='infobox warn'><?php translate('No switch selected'); ?></div>
+			<?php } ?>
+			<hr/>
 			<div id='subtitle'>
-				<?php if($cSwitch != null) { ?>
-					<h2>
-						<?php echo $cSwitch['name']; ?>
-						<?php if(!empty($port)) echo "<br>".htmlspecialchars($port); ?>
-					</h2>
-				<?php } else { ?>
-					<div class='infobox warn'><?php translate('No switch selected'); ?></div>
-				<?php } ?>
-				<hr/>
 				<div id='imgContainer'>
 					<img id='imgLoading' src='img/loading.svg'></img>
 					<img id='imgSwitch' src='img/switch.png'></img>
@@ -119,7 +119,7 @@ if($cSwitch != null && $cSnippet != null) {
 					if($snippet['scope'] == 'port') $img = 'img/notconnected.svg';
 					echo "<form method='POST'>";
 					echo "<input type='hidden' name='snippet' value='".htmlspecialchars($snippet['id'])."'>";
-					echo "<button class='fullwidth slubbutton secondary marginbottom' onclick='beginFadeOutAnimation();'><img class='smallimg' src='".$img."'>&nbsp;&nbsp;".htmlspecialchars($snippet['name'])."</button>";
+					echo "<button class='fullwidth slubbutton secondary notypo marginbottom' onclick='beginFadeOutAnimation();'><img class='smallimg' src='".$img."'>&nbsp;&nbsp;".htmlspecialchars($snippet['name'])."</button>";
 					echo "</form>";
 				}
 			}

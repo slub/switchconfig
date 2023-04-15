@@ -20,7 +20,7 @@ if(isset($_GET['switch']) && $_GET['switch'] != "") {
 	<title><?php translate('MAC Search'); ?> - <?php translate('Switchconfig'); ?></title>
 	<?php require('head.inc.php'); ?>
 </head>
-<body onLoad='self.focus()'>
+<body>
 	<script>
 	function beginFadeOutAnimation() {
 		document.getElementById('imgSwitch').style.opacity = 0;
@@ -30,17 +30,17 @@ if(isset($_GET['switch']) && $_GET['switch'] != "") {
 	}
 	</script>
 
-	<div id='logincontainer'>
+	<div id='container'>
 		<h1 id='title'><div id='logo'></div></h1>
 
-		<div id='loginsplash'>
+		<div id='splash' class='login'>
+			<?php if($cSwitch != null) { ?>
+				<h2><?php echo $cSwitch['name']; ?></h2>
+			<?php } else { ?>
+				<div class='infobox warn'><?php translate('No switch selected'); ?></div>
+			<?php } ?>
+			<hr/>
 			<div id='subtitle'>
-				<?php if($cSwitch != null) { ?>
-					<h2><?php echo $cSwitch['name']; ?></h2>
-				<?php } else { ?>
-					<div class='infobox warn'><?php translate('No switch selected'); ?></div>
-				<?php } ?>
-				<hr/>
 				<div id='imgContainer'>
 					<img id='imgLoading' src='img/loading.svg'></img>
 					<img id='imgSwitch' src='img/switch.png'></img>
@@ -79,9 +79,13 @@ if(isset($_GET['switch']) && $_GET['switch'] != "") {
 
 					<form method='GET' onsubmit='beginFadeOutAnimation();' name='searchform'>
 						<input type='hidden' name='switch' value='<?php echo $cSwitch['addr']; ?>' />
-						<div class='bottommargin'><?php translate('Search for MAC address on this switch'); ?></div>
-						<input type='text' placeholder='caff.eeca.ffee' name='q' class='fullwidth bottommargin' />
-						<input id='submit_search' type='submit' value='&gt;<?php translate('Start search'); ?>' class='slubbutton fullwidth bottommargin' />
+						<p><?php translate('Search for MAC address on this switch'); ?></p>
+						<div class='form-row'>
+							<input type='text' placeholder='caff.eeca.ffee' name='q' class='fullwidth' autofocus='true' />
+						</div>
+						<div class='form-row'>
+							<input id='submit_search' type='submit' value='&gt;<?php translate('Start search'); ?>' class='slubbutton fullwidth' />
+						</div>
 					</form>
 
 				<?php } ?>

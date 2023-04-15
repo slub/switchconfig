@@ -13,11 +13,10 @@ require_once('lang.php');
 <head>
 	<title>Maps - Switchconfig</title>
 	<?php require('head.inc.php'); ?>
-	<link rel='stylesheet' type='text/css' href='style/maps.css'>
 	<script language='javascript' type='text/javascript' src='js/move_on_drag.js'></script>
 </head>
 
-<body onLoad='self.focus();'>
+<body>
 
 <?php if (isset($_GET['map'])) { ?>
 
@@ -54,10 +53,10 @@ require_once('lang.php');
 
 <?php } else { ?>
 
-	<div id='logincontainer'>
+	<div id='container'>
 		<h1 id='title'><div id='logo'></div></h1>
 
-		<div id='loginsplash'>
+		<div id='splash' class='login'>
 
 			<div id='subtitle'>
 				<div id='imgContainer'>
@@ -70,7 +69,7 @@ require_once('lang.php');
 			<div id='maplist'>
 				<?php
 				foreach(MAPS as $currentmap) {
-					echo "<a href='maps.php?map=" . $currentmap['name'] . "' class='slubbutton secondary'>&gt;" . $currentmap['displayname'] . "</a>\n";
+					echo "<a href='maps.php?map=" . $currentmap['name'] . "' class='slubbutton secondary'>" . $currentmap['displayname'] . "</a>\n";
 				}
 				?>
 			</div>

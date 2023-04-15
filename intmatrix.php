@@ -106,9 +106,9 @@ if(isset($_GET['refreshtableonly']) && $_GET['refreshtableonly'] == "1")
 <head>
 	<title><?php translate('Portmatrix'); ?> - <?php translate('Switchconfig'); ?></title>
 	<?php require('head.inc.php'); ?>
-	<link rel='stylesheet' type='text/css' href='style/intmatrix.css'>
+	<link rel='stylesheet' type='text/css' href='css/intmatrix.css'>
 </head>
-<body onLoad=''>
+<body>
 	<script>
 	function beginFadeOutAnimation() {
 		document.getElementById('imgSwitch').style.opacity = 0;
@@ -131,18 +131,18 @@ if(isset($_GET['refreshtableonly']) && $_GET['refreshtableonly'] == "1")
 				echo "window.setInterval(reloadMatrix, 5000);"; ?>
 	</script>
 
-	<div id='logincontainer'>
+	<div id='container'>
 		<h1 id='title'><div id='logo'></div></h1>
 
-		<div id='loginsplash' class='big'>
+		<div id='splash' class='big'>
+			<?php if($cSwitch != null) { ?>
+				<h2><?php echo $cSwitch['name']; ?></h2>
+			<?php } else { ?>
+				<div class='infobox warn'><?php translate('No switch selected'); ?></div>
+				<style>.matrix { display: none }</style>
+			<?php } ?>
+			<hr/>
 			<div id='subtitle'>
-				<?php if($cSwitch != null) { ?>
-					<h2><?php echo $cSwitch['name']; ?></h2>
-				<?php } else { ?>
-					<div class='infobox warn'><?php translate('No switch selected'); ?></div>
-					<style>.matrix { display: none }</style>
-				<?php } ?>
-				<hr/>
 				<div id='imgContainer'>
 					<img id='imgLoading' src='img/loading.svg'></img>
 					<img id='imgSwitch' src='img/switch.png'></img>

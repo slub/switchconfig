@@ -20,9 +20,9 @@ if(isset($_GET['switch']) && $_GET['switch'] != "") {
 <head>
 	<title><?php translate('Interface Status List'); ?> - <?php translate('Switchconfig'); ?></title>
 	<?php require('head.inc.php'); ?>
-	<link rel='stylesheet' type='text/css' href='style/intstatuslist.css'>
+	<link rel='stylesheet' type='text/css' href='css/intstatuslist.css'>
 </head>
-<body onLoad='self.focus();'>
+<body>
 	<script>
 	function beginFadeOutAnimation() {
 		document.getElementById('imgSwitch').style.opacity = 0;
@@ -30,17 +30,17 @@ if(isset($_GET['switch']) && $_GET['switch'] != "") {
 	}
 	</script>
 
-	<div id='logincontainer'>
+	<div id='container'>
 		<h1 id='title'><div id='logo'></div></h1>
 
-		<div id='loginsplash' class='big'>
+		<div id='splash' class='big'>
+			<?php if($cSwitch != null) { ?>
+				<h2><?php echo $cSwitch['name']; ?></h2>
+			<?php } else { ?>
+				<div class='infobox warn'><?php translate('No switch selected'); ?></div>
+			<?php } ?>
+			<hr/>
 			<div id='subtitle'>
-				<?php if($cSwitch != null) { ?>
-					<h2><?php echo $cSwitch['name']; ?></h2>
-				<?php } else { ?>
-					<div class='infobox warn'><?php translate('No switch selected'); ?></div>
-				<?php } ?>
-				<hr/>
 				<div id='imgContainer'>
 					<img id='imgLoading' src='img/loading.svg'></img>
 					<img id='imgSwitch' src='img/switch.png'></img>

@@ -75,45 +75,53 @@ if(isset($_GET['logout'])) {
 	}
 	</style>
 </head>
-<body onLoad='username.focus();'>
+<body>
 	<script>
 	function beginFadeOutAnimation() {
-		document.getElementById('loginsplash').className = 'out';
-		document.getElementById('splashloading').className = 'load';
-		document.getElementById('submitLogin').disabled = 'true';
-		document.getElementById('username').readOnly = 'true';
-		document.getElementById('password').readOnly = 'true';
+		document.getElementById('imgSwitch').style.opacity = 0;
+		document.getElementById('imgLoading').style.opacity = 1;
+		document.getElementById('submitLogin').disabled = true;
+		document.getElementById('username').readOnly = true;
+		document.getElementById('password').readOnly = true;
 	}
 	</script>
 
-	<div id='logincontainer'>
-		<img id='splashloading' src='img/loading.login.svg'></img>
+	<div id='container'>
 		<h1 id='title'><div id='logo'></div></h1>
 
-		<div id='loginsplash'>
+		<div id='splash' class='login'>
 			<div id='subtitle'>
 				<div id='imgContainer'>
+					<img id='imgLoading' src='img/loading.svg'></img>
 					<img id='imgSwitch' src='img/switch.login.png' class='easteregg-trigger' onclick='boom()' title='initiate self destruction'></img>
 				</div>
-				<div>
+				<p class='first'>
 					<?php translate('This web application allows you to configure Cisco switches through a graphical interface.'); ?>
-				</div>
-				<div class='toolbar-margin-top'>
+				</p>
+				<p class='toolbar-margin-top'>
 					<b><?php translate('Switch Authentication'); ?></b><br>
 					<?php translate('Please log in with your switch credentials (SSH).'); ?>
-				</div>
+				</p>
 			</div>
 
 			<?php require_once('php/browsercheck.php'); ?>
 
-			<?php if ($info != '') { ?>
+			<?php if($info != '') { ?>
 				<div class='infobox <?php echo $infoClass; ?>'><?php echo $info; ?></div>
 			<?php } ?>
 
 			<form method='POST' action='login.php' name='loginform' onsubmit='beginFadeOutAnimation();'>
-				<input type='text' id='username' name='username' class='fullwidth bottommargin' placeholder='<?php translate("Username"); ?>' />
-				<input type='password' id='password' name='password' class='fullwidth bottommargin' placeholder='<?php translate("Password"); ?>' />
-				<input type='submit' id='submitLogin' class='slubbutton fullwidth' value='&gt;<?php translate("Log In"); ?>' />
+				<div class='form-row'>
+					<input type='text' id='username' name='username' placeholder='<?php translate("Username"); ?>' />
+					<img src='webdesign-template/img/person.svg'>
+				</div>
+				<div class='form-row'>
+					<input type='password' id='password' name='password' placeholder='<?php translate("Password"); ?>' />
+					<img src='webdesign-template/img/key.svg'>
+				</div>
+				<div class='form-row'>
+					<button id='submitLogin' class='slubbutton'><?php translate("Log In"); ?></button>
+				</div>
 			</form>
 
 		</div>

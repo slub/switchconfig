@@ -1,0 +1,1 @@
+This is a snapshot of the SLUB-internal "Webdesign-Template" repo.

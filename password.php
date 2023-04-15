@@ -5,7 +5,7 @@ require_once('php/session.php');
 require_once('php/functions.php');
 require_once('switchlist.php');
 require_once('lang.php');
-if(!ENABLE_PASSWORD_CHANGE) die("Not available.");
+if(!ENABLE_PASSWORD_CHANGE) die('This feature is disabled.');
 
 ?>
 
@@ -15,7 +15,7 @@ if(!ENABLE_PASSWORD_CHANGE) die("Not available.");
 	<title><?php translate('Change Password'); ?> - <?php translate('Switchconfig'); ?></title>
 	<?php require('head.inc.php'); ?>
 </head>
-<body onLoad='document.passwordform.newpw.focus()'>
+<body>
 	<script>
 	function beginFadeOutAnimation() {
 		document.getElementById('imgSwitch').style.opacity = 0;
@@ -38,21 +38,22 @@ if(!ENABLE_PASSWORD_CHANGE) die("Not available.");
 	}
 	</style>
 
-	<div id='logincontainer'>
-		<h1 id='title'><a><img id='logo' src='img/logo.png' /></a></h1>
+	<div id='container'>
+		<h1 id='title'><div id='logo'></div></h1>
 
-		<div id='loginsplash'>
-			<div id='subtitle'>
-				<div id='imgContainer'>
-					<img id='imgLoading' src='img/loading.svg'></img>
-					<img id='imgSwitch' src='img/switch.png'></img>
-				</div>
-				<?php translate('With this form you can change your password on all switches. After the procedure is done, you have to log in again.'); ?>
-				<br><br>
-				<?php translate('This procedure can take some minutes, because the webserver has to establish an SSH connection to all switches. Please do not close this page until finished.'); ?>
+		<div id='splash' class='login'>
+			<div id='imgContainer'>
+				<img id='imgLoading' src='img/loading.svg'></img>
+				<img id='imgSwitch' src='img/switch.png'></img>
 			</div>
-
-			<table width='100%' id='logintable'>
+			<div id='subtitle'>
+				<p>
+					<?php translate('With this form you can change your password on all switches. After the procedure is done, you have to log in again.'); ?>
+				</p>
+				<p>
+					<?php translate('This procedure can take some minutes, because the webserver has to establish an SSH connection to all switches. Please do not close this page until finished.'); ?>
+				</p>
+			</div>
 
 <?php
 $info = "";
@@ -94,19 +95,19 @@ if(isset($_POST['newpw']) && isset($_POST['newpw2'])) {
 
 				}
 				session_destroy();
-				$info .= "<tr><td><div class='infobox ok'>Kennwort wurde auf den oben genannten Switchen geändert</div></input></td></tr>";
-				$info .= "<tr><td><div class='infobox info'>Sie müssen sich neu anmelden</div></input></td></tr>";
-				$info .= "<tr><td><a href='login.php' class='slubbutton'>&gt;Jetzt neu anmelden</a></td></tr>";
+				$info .= "<div class='infobox ok'>Kennwort wurde auf den oben genannten Switchen geändert</div>";
+				$info .= "<div class='infobox info'>Sie müssen sich neu anmelden</div>";
+				$info .= "<a href='login.php' class='slubbutton'>Jetzt neu anmelden</a>";
 				$showform = false;
 				echo "<script>endFadeOutAnimation();</script>";
 			} else {
-				$info = "<tr><td><div class='infobox warn'>Folgende Sonderzeichen oder Leerzeichen sind nicht erlaubt!<br><span style='font-family: monospace;'>\" | > $</span></div></input></td></tr>";
+				$info = "<div class='infobox warn'>Folgende Sonderzeichen oder Leerzeichen sind nicht erlaubt!<br><span style='font-family: monospace;'>\" | > $</span></div>";
 			}
 		} else {
-			$info = "<tr><td><div class='infobox warn'>Das Kennwort darf nicht leer sein!</div></input></td></tr>";
+			$info = "<div class='infobox warn'>Das Kennwort darf nicht leer sein!</div>";
 		}
 	} else {
-		$info = "<tr><td><div class='infobox warn'>Die Passwörter stimmen nicht überein!</div></input></td></tr>";
+		$info = "<div class='infobox warn'>Die Passwörter stimmen nicht überein!</div>";
 	}
 }
 ?>
@@ -114,36 +115,30 @@ if(isset($_POST['newpw']) && isset($_POST['newpw2'])) {
 				<?php echo $info; ?>
 
 				<?php if($showform == true) { ?>
-				<form method='POST' name='passwordform' onsubmit='beginFadeOutAnimation();'>
-					<tr><td>
-						<input type='text' name='username' id='username' value='<?php echo $_SESSION['username']; ?>' readonly></input>
-						<span class='tip'><label for='description'><?php translate('Username'); ?></label></span>
-						<br>
-					</td></tr>
+					<form method='POST' name='passwordform' onsubmit='beginFadeOutAnimation();'>
+						<div class='form-row'>
+							<input type='text' name='username' id='username' value='<?php echo $_SESSION['username']; ?>' readonly></input>
+							<span class='tip'><label for='description'><?php translate('Username'); ?></label></span>
+							<br>
+						</div>
+						<div class='form-row'>
+							<input type='password' name='newpw' id='newpw' autofocus='true'></input>
+							<span class='tip'><label for='description'><?php translate('New Password'); ?></label></span>
+							<br>
+						</div>
+						<div class='form-row'>
+							<input type='password' name='newpw2' id='newpw2' autofocus='true'></input>
+							<span class='tip'><label for='description'><?php translate('Confirm New Password'); ?></label></span>
+							<br>
+						</div>
+						<div class='form-row'>
+							<button class='slubbutton'><?php translate('Change Password'); ?></button>
+						</div>
+					</form>
 
-					<tr><td>
-						<input type='password' name='newpw' id='newpw' value=''></input>
-						<span class='tip'><label for='description'><?php translate('New Password'); ?></label></span>
-						<br>
-					</td></tr>
-
-					<tr><td>
-						<input type='password' name='newpw2' id='newpw2' value=''></input>
-						<span class='tip'><label for='description'><?php translate('Confirm New Password'); ?></label></span>
-						<br>
-					</td></tr>
-
-					<tr><td>
-						<input type='submit' value='&gt;<?php translate('Change Password'); ?>' class='slubbutton'>
-					</td></tr>
-				</form>
-
-				<tr><td>
 					<a href='index.php' onclick='beginFadeOutAnimation();'>&gt;<?php translate('Back'); ?></a>
-				</td></tr>
 				<?php } ?>
 
-			</table>
 		</div>
 
 		<?php require('foot.inc.php'); ?>

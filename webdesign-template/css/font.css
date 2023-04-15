@@ -1,0 +1,43 @@
+@font-face {
+	font-family: 'VisSansLight';
+	src: url('../fonts/VistaSansSOT-Light.eot');
+	src: url('../fonts/VistaSansSOT-Light.eot?#iefix') format('embedded-opentype'), url('../fonts/VistaSansSOT-Light.woff') format('woff'), url('../fonts/VistaSansSOT-Light.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 400;
+}
+@font-face {
+	font-family: 'VisSansBook';
+	src: url('../fonts/VistaSansSOT-Book.eot');
+	src: url('../fonts/VistaSansSOT-Book.eot?#iefix') format('embedded-opentype'), url('../fonts/VistaSansSOT-Book.woff') format('woff'), url('../fonts/VistaSansSOT-Book.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 400;
+}
+@font-face {
+	font-family: 'VisSansBold';
+	src: url('../fonts/VistaSansSOT-Bold.eot');
+	src: url('../fonts/VistaSansSOT-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/VistaSansSOT-Bold.woff') format('woff'), url('../fonts/VistaSansSOT-Bold.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'VisSlabReg';
+	src: url('../fonts/VistaSlabSOT-Regular.eot');
+	src: url('../fonts/VistaSlabSOT-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/VistaSlabSOT-Regular.woff') format('woff'), url('../fonts/VistaSlabSOT-Regular.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 400;
+}
+@font-face {
+	font-family: 'VisSlabMed';
+	src: url('../fonts/VistaSlabSOT-Medium.eot');
+	src: url('../fonts/VistaSlabSOT-Medium.eot?#iefix') format('embedded-opentype'), url('../fonts/VistaSlabSOT-Medium.woff') format('woff'), url('../fonts/VistaSlabSOT-Medium.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 400;
+}
+@font-face {
+	font-family: 'VisSlabBold';
+	src: url('../fonts/VistaSlabSOT-Bold.eot');
+	src: url('../fonts/VistaSlabSOT-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/VistaSlabSOT-Bold.woff') format('woff'),	 url('../fonts/VistaSlabSOT-Bold.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 400;
+}

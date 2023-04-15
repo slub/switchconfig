@@ -10,46 +10,21 @@
    width="24"
    height="24"
    viewBox="0 0 24 24"
-   id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="location.svg">
-  <metadata
-     id="metadata12">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs10" />
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1784"
-     inkscape:window-height="1186"
-     id="namedview8"
-     showgrid="false"
-     inkscape:zoom="9.8333333"
-     inkscape:cx="9.0194675"
-     inkscape:cy="12"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg2" />
+   inkscape:version="0.91 r13725">
+<style>
+  path, g {
+    fill: #3c3c3c;
+  }
+  @media (prefers-color-scheme: dark) {
+    path, g {
+      fill: #E9ECEF;
+    }
+  }
+</style>
   <path
      d="m 12,1.2907882 c -4.0552399,0 -7.3350591,3.2798192 -7.3350591,7.3350589 C 4.6649409,14.127141 12,22.248099 12,22.248099 c 0,0 7.335059,-8.120958 7.335059,-13.6222519 0,-4.0552397 -3.27982,-7.3350589 -7.335059,-7.3350589 z m 0,9.9547218 c -1.446055,0 -2.6196641,-1.173609 -2.6196641,-2.6196629 0,-1.4460545 1.1736091,-2.6196639 2.6196641,-2.6196639 1.446054,0 2.619664,1.1736094 2.619664,2.6196639 0,1.4460539 -1.17361,2.6196629 -2.619664,2.6196629 z"
      id="path4"
-     style="fill:#3c3c3c;stroke:none;stroke-width:1;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1"
+     style="stroke:none;stroke-width:1;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1"
      inkscape:connector-curvature="0" />
 </svg>

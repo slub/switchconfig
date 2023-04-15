@@ -1,5 +1,5 @@
 function boom() {
-	logincontainer.style.display = 'none';
+	container.style.display = "none";
 
 	var text = document.createElement("h1");
 	text.style.position = "fixed";
