@@ -26,7 +26,7 @@ Web application for managing cisco switches via SSH
 0. Install packages (example for Debian): `apt install apache2 php php-ssh2`
 1. Copy all files into your webserver directory
 2. Make sure "AllowOverride All" is set in your Apache config for the webserver directory, in order to deny access to the "maps" directory for non-authenticated users (see .htaccess file in this directory).
-3. Create/Edit the config file __switchlist.php__ (please refer to the explanation and example in the file __switchlist.example.php__)
+3. Create/Edit the config file __switchlist.php__ (please refer to the explanation and example in the file __switchlist.php.example__)
    - add the vlans you need to the array __VISIBLE_VLAN__
    - add the switches you want to manage to the array __SWITCHES__ (at least one)
    - (optional) set the __VOICE_VLAN__ (integer)
