@@ -95,19 +95,19 @@ if(isset($_POST['newpw']) && isset($_POST['newpw2'])) {
 
 				}
 				session_destroy();
-				$info .= "<div class='infobox ok'>Kennwort wurde auf den oben genannten Switchen geändert</div>";
-				$info .= "<div class='infobox info'>Sie müssen sich neu anmelden</div>";
-				$info .= "<a href='login.php' class='slubbutton'>Jetzt neu anmelden</a>";
+				$info .= "<div class='infobox ok'>".translate("Password changed on the displayed switches",false)."</div>";
+				$info .= "<div class='infobox info'>".translate("You need to login again",false)."</div>";
+				$info .= "<a href='login.php' class='slubbutton'>".translate("Re-Login Now",false)."</a>";
 				$showform = false;
 				echo "<script>endFadeOutAnimation();</script>";
 			} else {
-				$info = "<div class='infobox warn'>Folgende Sonderzeichen oder Leerzeichen sind nicht erlaubt!<br><span style='font-family: monospace;'>\" | > $</span></div>";
+				$info = "<div class='infobox warn'>".translate("The following special chars are not allowed!",false)."<br><span style='font-family: monospace;'>\" | > $</span></div>";
 			}
 		} else {
-			$info = "<div class='infobox warn'>Das Kennwort darf nicht leer sein!</div>";
+			$info = "<div class='infobox warn'>".translate("The password cannot be empty",false)."</div>";
 		}
 	} else {
-		$info = "<div class='infobox warn'>Die Passwörter stimmen nicht überein!</div>";
+		$info = "<div class='infobox warn'>".translate("The passwords do not match!",false)."</div>";
 	}
 }
 ?>
