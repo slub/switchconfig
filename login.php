@@ -110,7 +110,7 @@ if(isset($_GET['logout'])) {
 				<div class='infobox <?php echo $infoClass; ?>'><?php echo $info; ?></div>
 			<?php } ?>
 
-			<form method='POST' action='login.php' name='loginform' onsubmit='beginFadeOutAnimation();'>
+			<form method='POST' action='login.php' name='loginform' id='frmLogin' onsubmit='beginFadeOutAnimation();'>
 				<div class='form-row'>
 					<input type='text' id='username' name='username' placeholder='<?php translate("Username"); ?>' />
 					<img src='webdesign-template/img/person.svg'>

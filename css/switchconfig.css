@@ -1,4 +1,4 @@
-.form-row {
+form:not(#frmLogin) .form-row {
 	margin-bottom: 	10px;
 }
 .multirow {
@@ -222,12 +222,14 @@ img[src='img/disabled.svg'] {
 	#logo {
 		width: 100%;
 		height: 50px;
+		background-size: auto 50px;
 		background-position: center;
+		background-repeat: no-repeat;
 	}
 	#container,
 	#splash {
 		box-sizing: border-box;
-		width: 100%;
+		max-width: 100%;
 	}
 	#container {
 		margin-top: 70px;
@@ -245,7 +247,7 @@ img[src='img/disabled.svg'] {
 		float: none;
 	}
 	.tipicon {
-		top: 10px;
-		right: 70px;
+		top: 8px !important;
+		right: 75px !important;
 	}
 }
