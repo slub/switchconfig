@@ -237,6 +237,11 @@ img[src='img/disabled.svg'] {
 	#splash {
 		padding: 15px 10px;
 	}
+	.form-row img {
+		top: 10px;
+		height: 20px;
+		width: 20px;
+	}
 	.slubbutton {
 		min-width: 75px;
 	}
@@ -247,7 +252,7 @@ img[src='img/disabled.svg'] {
 		float: none;
 	}
 	.tipicon {
-		top: 8px !important;
+		top: 9px !important;
 		right: 75px !important;
 	}
 }
