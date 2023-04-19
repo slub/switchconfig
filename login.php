@@ -112,7 +112,7 @@ if(isset($_GET['logout'])) {
 
 			<form method='POST' action='login.php' name='loginform' id='frmLogin' onsubmit='beginFadeOutAnimation();'>
 				<div class='form-row'>
-					<input type='text' id='username' name='username' placeholder='<?php translate("Username"); ?>' />
+					<input type='text' id='username' name='username' placeholder='<?php translate("Username"); ?>' autofocus='true' />
 					<img src='webdesign-template/img/person.svg'>
 				</div>
 				<div class='form-row'>
