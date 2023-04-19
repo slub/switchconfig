@@ -239,6 +239,7 @@ img[src='img/disabled.svg'] {
 	}
 	.form-row img {
 		top: 10px;
+		right: 10px;
 		height: 20px;
 		width: 20px;
 	}

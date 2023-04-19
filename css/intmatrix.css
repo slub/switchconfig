@@ -21,12 +21,18 @@
 	cursor: pointer;
 }
 .voip {
-	background-image: url("../img/voip-intmatrix.png");
+	background-image: url('../img/voip-intmatrix.svg');
+	background-size: 16px;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 .other {
 	border: 1px solid gray;
 	background-color: rgba(220, 220, 220, 0.9);
-	background-image: url("../img/disabled-intmatrix.png");
+	background-image: url('../img/disabled-intmatrix.svg');
+	background-size: 16px;
+	background-repeat: no-repeat;
+	background-position: center;
 	cursor: pointer;
 }
 
