@@ -59,6 +59,28 @@ function getStatusImg($status, $htmlclass = "") {
 		return "<img src='img/disabled.svg' title='" . $status . "' class='$htmlclass'></img>";
 }
 
+function formatMac($input) {
+	// format mac address in Cisco-like format
+	// ca:ff:ee:ca:ff:ee  ca-ff-ee-ca-ff-ee  caff.eeca.ffee  caffeecaffee  ->  caff.eeca.ffee
+	$naked = strtolower(str_replace([':', '-', '.'], '', $input));
+	if(strlen(str_replace(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'], '', $naked)) > 0
+	|| strlen($naked) != 12) {
+		return false;
+	}
+	return addMacSeparator($naked);
+}
+function addMacSeparator($nakedMac) {
+	$result = '';
+	while(strlen($nakedMac) > 0) {
+		$sub = substr($nakedMac, 0, 4);
+		$result .= $sub . '.';
+		$nakedMac = substr($nakedMac, 4, strlen($nakedMac));
+	}
+	// remove trailing dot
+	$result = substr($result, 0, strlen($result) - 1);
+	return $result;
+}
+
 /* Maps */
 function switchOnMapAvail($MAPS, $switch) {
 	foreach ($MAPS as $currentmap) {
