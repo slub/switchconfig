@@ -9,6 +9,6 @@
 	<div>
 	</div>
 	<div>
-		<span class='version'>v2.2</span>
+		<span class='version'>v2.2.1</span>
 	</div>
 </div>
