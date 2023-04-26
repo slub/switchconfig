@@ -3,7 +3,7 @@
 require_once('php/session.php');
 
 require_once('php/functions.php');
-require_once('switchlist.php');
+require_once('config.php');
 require_once('lang.php');
 if(!ENABLE_PASSWORD_CHANGE) die('This feature is disabled.');
 

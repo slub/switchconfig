@@ -4,7 +4,7 @@ require_once('php/session.php');
 session_write_close();
 
 require_once('php/functions.php');
-require_once('switchlist.php');
+require_once('config.php');
 require_once('php/switchoperations.php');
 require_once('lang.php');
 
