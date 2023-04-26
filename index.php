@@ -280,7 +280,7 @@ if($cSwitch != null) {
 			<div class='stretched-toolbar'>
 				<?php
 				$options_disabled = $cSwitch==null ? "disabled='true'" : "";
-				$switchportparams = "switch=".urlencode($cSwitch==null ? '' : $cSwitch['addr']) . "&port=".urlencode($port!='' ? '' : $port);
+				$switchportparams = "switch=".urlencode($cSwitch==null ? '' : $cSwitch['addr']) . "&port=".urlencode(empty($port) ? '' : $port);
 				?>
 				<a href='intstatuslist.php?<?php echo($switchportparams); ?>' id='function_intstatuslist' class='slubbutton secondary' onclick='beginFadeOutAnimation()' <?php echo $options_disabled; ?>><?php translate('Port List'); ?></a>
 				<a href='intmatrix.php?<?php echo($switchportparams); ?>' id='function_intmatrix' class='slubbutton secondary' onclick='beginFadeOutAnimation()' <?php echo $options_disabled; ?>><?php translate('Port Matrix'); ?></a>

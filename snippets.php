@@ -139,8 +139,10 @@ if($cSwitch != null && $cSnippet != null) {
 				<tr>
 					<td>
 						<div class='spread-toolbar toolbar-margin-top'>
-							<a href='index.php?switch=<?php echo urlencode($cSwitch['addr']); ?>' onclick='beginFadeOutAnimation();'>&gt;<?php translate('Back'); ?></a>
-							<a href='snippets.php?switch=<?php echo urlencode($cSwitch['addr']); ?>&port=<?php echo urlencode($port); ?>' onclick='beginFadeOutAnimation();'>&gt;<?php translate('Execute Another Snippet'); ?></a>
+							<a href='index.php?switch=<?php echo urlencode($cSwitch['addr']); ?>&port=<?php echo urlencode($port); ?>' onclick='beginFadeOutAnimation();'>&gt;<?php translate('Back'); ?></a>
+							<?php if($cmdResponse !== null) { ?>
+								<a href='snippets.php?switch=<?php echo urlencode($cSwitch['addr']); ?>&port=<?php echo urlencode($port); ?>' onclick='beginFadeOutAnimation();'>&gt;<?php translate('Execute Another Snippet'); ?></a>
+							<?php } ?>
 						</div>
 					</td>
 				</tr>
