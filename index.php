@@ -111,7 +111,6 @@ if($cSwitch != null) {
 		document.getElementById('submit_changeform').setAttribute('disabled', true);
 		document.getElementById('function_intstatuslist').setAttribute('disabled', true);
 		document.getElementById('function_intmatrix').setAttribute('disabled', true);
-		document.getElementById('function_more').setAttribute('disabled', true);
 		document.getElementById('function_snippets').setAttribute('disabled', true);
 		document.getElementById('function_search').setAttribute('disabled', true);
 	}
@@ -282,14 +281,10 @@ if($cSwitch != null) {
 				$options_disabled = $cSwitch==null ? "disabled='true'" : "";
 				$switchportparams = "switch=".urlencode($cSwitch==null ? '' : $cSwitch['addr']) . "&port=".urlencode(empty($port) ? '' : $port);
 				?>
-				<a href='intstatuslist.php?<?php echo($switchportparams); ?>' id='function_intstatuslist' class='slubbutton secondary' onclick='beginFadeOutAnimation()' <?php echo $options_disabled; ?>><?php translate('Port List'); ?></a>
-				<a href='intmatrix.php?<?php echo($switchportparams); ?>' id='function_intmatrix' class='slubbutton secondary' onclick='beginFadeOutAnimation()' <?php echo $options_disabled; ?>><?php translate('Port Matrix'); ?></a>
-				<button id='function_more' class='slubbutton secondary' <?php echo $options_disabled; ?>><?php translate('More'); ?>
-					<div id='function_more_container'>
-						<a href='search.php?<?php echo($switchportparams); ?>' id='function_search' class='slubbutton secondary' onclick='beginFadeOutAnimation()' <?php echo $options_disabled; ?>><?php translate('MAC Search'); ?></a>
-						<a href='snippets.php?<?php echo($switchportparams); ?>' id='function_snippets' class='slubbutton secondary' onclick='beginFadeOutAnimation()' <?php echo $options_disabled; ?>><?php translate('Snippets'); ?></a>
-					</div>
-				</button>
+				<a href='intstatuslist.php?<?php echo($switchportparams); ?>' id='function_intstatuslist' class='slubbutton secondary notypo' onclick='beginFadeOutAnimation()' <?php echo $options_disabled; ?>><img src='img/intstatuslist.svg'><?php translate('Port List'); ?></a>
+				<a href='intmatrix.php?<?php echo($switchportparams); ?>' id='function_intmatrix' class='slubbutton secondary notypo' onclick='beginFadeOutAnimation()' <?php echo $options_disabled; ?>><img src='img/intmatrix.svg'><?php translate('Port Matrix'); ?></a>
+				<a href='search.php?<?php echo($switchportparams); ?>' id='function_search' class='slubbutton secondary notypo' onclick='beginFadeOutAnimation()' <?php echo $options_disabled; ?>><img src='img/search.svg'><?php translate('MAC Search'); ?></a>
+				<a href='snippets.php?<?php echo($switchportparams); ?>' id='function_snippets' class='slubbutton secondary notypo' onclick='beginFadeOutAnimation()' <?php echo $options_disabled; ?>><img src='img/snippets.svg'><?php translate('Snippets'); ?></a>
 			</div>
 		</div>
 

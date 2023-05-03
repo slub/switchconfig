@@ -180,8 +180,11 @@ a.slubbutton[disabled]:focus,
 a.slubbutton[disabled]:active {
 	pointer-events: 	none;
 }
-.slubbutton:hover img {
+.slubbutton:not([disabled]):hover img {
 	filter: brightness(999%);
+}
+.slubbutton[disabled] img {
+	opacity: 0.6;
 }
 
 
