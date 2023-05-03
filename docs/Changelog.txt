@@ -1,3 +1,8 @@
+
+Version 2.3.0.0 [Sieber] [04/2023]
+- improved mac address search
+- improved main menu
+
 Version 2.2.1.0 [Sieber] [04/2023]
 - minor webdesign improvements
 - changed config file name
