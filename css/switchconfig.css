@@ -1,6 +1,9 @@
 form:not(#frmLogin) .form-row {
 	margin-bottom: 	10px;
 }
+form:not(#frmLogin) .form-row.last {
+	margin-bottom: 	0px !important;
+}
 .multirow {
 	display: 		flex;
 	flex-direction: row;

@@ -271,10 +271,12 @@ if($cSwitch != null) {
 					<?php } ?>
 				</div>
 
-				<div class='form-row'>
-					<button type='submit' class='slubbutton fullwidth' id='submit_changeform' <?php if($cSwitch == null || $port == "") echo "disabled"; ?>><?php translate('Save'); ?></button>
+				<div class='form-row last'>
+					<button type='submit' class='slubbutton' id='submit_changeform' <?php if($cSwitch == null || $port == "") echo "disabled"; ?>><?php translate('Save'); ?></button>
 				</div>
 			</form>
+
+			<hr>
 
 			<div class='stretched-toolbar'>
 				<?php
