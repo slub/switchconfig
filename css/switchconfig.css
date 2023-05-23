@@ -202,36 +202,6 @@ img[src='img/disabled.svg'] {
 
 /* mobile device adjustments */
 @media only screen and (max-width: 620px) {
-	html, body {
-		font-size: 12px;
-	}
-	#logo {
-		width: 100%;
-		height: 50px;
-		background-size: auto 50px;
-		background-position: center;
-		background-repeat: no-repeat;
-	}
-	#container,
-	#splash {
-		box-sizing: border-box;
-		max-width: 100%;
-	}
-	#container {
-		margin-top: 70px;
-	}
-	#splash {
-		padding: 15px 10px;
-	}
-	.form-row img {
-		top: 10px;
-		right: 10px;
-		height: 20px;
-		width: 20px;
-	}
-	.slubbutton {
-		min-width: 75px;
-	}
 	#function_intstatuslist,
 	#function_intmatrix,
 	#function_search {
