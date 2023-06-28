@@ -42,7 +42,7 @@ function startsWith($haystack, $needle) {
 
 function endsWith($haystack, $needle) {
 	$length = strlen($needle);
-	if ($length == 0) return true;
+	if($length == 0) return true;
 	return (substr($haystack, -$length) === $needle);
 }
 
@@ -50,13 +50,10 @@ function str_chop_lines($str, $lines = 3) {
 	return implode("\n", array_slice(explode("\n", $str), $lines));
 }
 
-function getStatusImg($status, $htmlclass = "") {
-	if ($status == "connected")
-		return "<img src='img/connected.svg' title='connected' class='$htmlclass'></img>";
-	elseif ($status == "notconnect")
-		return "<img src='img/notconnected.svg' title='" . $status . "' class='$htmlclass'></img>";
-	else
-		return "<img src='img/disabled.svg' title='" . $status . "' class='$htmlclass'></img>";
+function getStatusImgPath($status) {
+	if($status == 'connected') return 'img/connected.svg';
+	elseif($status == 'notconnect') return 'img/notconnected.svg';
+	else return 'img/disabled.svg';
 }
 
 function formatMac($input) {
@@ -83,9 +80,9 @@ function addMacSeparator($nakedMac) {
 
 /* Maps */
 function switchOnMapAvail($MAPS, $switch) {
-	foreach ($MAPS as $currentmap) {
-		foreach ($currentmap['items'] as $item) {
-			if ($item['switch'] == $switch) {
+	foreach($MAPS as $currentmap) {
+		foreach($currentmap['items'] as $item) {
+			if($item['switch'] == $switch) {
 				return $currentmap['name'];
 			}
 		}

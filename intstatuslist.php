@@ -86,7 +86,7 @@ if(isset($_GET['switch']) && $_GET['switch'] != "") {
 					echo "\t<tr onclick='beginFadeOutAnimation(); window.location.href = \"$link_href\"' title='".translate('(click to configure)',false)."'>\n";
 					echo "\t\t<td>$link" . htmlspecialchars($interface['port']) . "$link_end</td>\n";
 					echo "\t\t<td>$link" . htmlspecialchars($interface['desc']) . "$link_end</td>\n";
-					echo "\t\t<td>$link" . getStatusImg($interface['stat']) . "$link_end</td>\n";
+					echo "\t\t<td>$link<img src='" . getStatusImgPath($interface['stat']) . "'>$link_end</td>\n";
 					echo "\t\t<td>$link" . htmlspecialchars($interface['vlan']) . "$link_end</td>\n";
 					echo "\t\t<td class='small'>$link" . htmlspecialchars($interface['dupl']) . "$link_end</td>\n";
 					echo "\t\t<td class='small'>$link" . htmlspecialchars($interface['spee']) . "$link_end</td>\n";

@@ -182,7 +182,8 @@ if($cSwitch != null) {
 						<?php
 						if($port == "" && $cSwitch != null)
 							echo "<option value='' selected='true' disabled='true'>&gt;&gt;&gt; ".translate("Please select",false)." &lt;&lt;&lt;</option>";
-						$icon = "";
+						$icon = null;
+						$status = "";
 						$queried_port_found = false;
 						foreach($interfaces as $interface) {
 							if(startsWith($interface['port'], "Gi") // only show "normal" ports
@@ -193,7 +194,8 @@ if($cSwitch != null) {
 								$selected = "";
 								if($interface['port'] == $port) {
 									$selected = "selected";
-									$icon = getStatusImg($interface['stat'], "tipicon");
+									$status = $interface['stat'];
+									$icon = getStatusImgPath($interface['stat']);
 									$queried_port_found = true;
 								}
 								echo "<option value='" . $interface['port'] . "' $selected>" . $interface['port'] . "</option>\n";
@@ -206,7 +208,7 @@ if($cSwitch != null) {
 						?>
 					</select>
 					<span class='tip'><label for='port'><?php translate('Port'); ?></label></span>
-					<?php echo $icon ?>
+					<?php if($icon) echo "<img src='".$icon."' title='".htmlspecialchars($status)."' class='tipicon'>"; ?>
 					<span class='tooltiptext'>
 						<div><b><?php translate('Icons'); ?></b></div>
 						<div class='demoStatusIcon'>
@@ -219,7 +221,7 @@ if($cSwitch != null) {
 						</div>
 						<div class='demoStatusIcon'>
 							<img src='img/disabled.svg'></img>
-							<span>&nbsp;<?php translate('Other State (Disabled)'); ?></span>
+							<span>&nbsp;<?php translate('Other State'); ?></span>
 						</div>
 					</span>
 				</div>
