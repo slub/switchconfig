@@ -83,7 +83,7 @@ if(isset($_GET['switch']) && $_GET['switch'] != "") {
 					$link_href = "index.php?switch=".urlencode($cSwitch['addr'])."&port=".urlencode($interface['port']);
 					$link = "<a href='$link_href' onclick='beginFadeOutAnimation();'>";
 					$link_end = "</a>";
-					echo "\t<tr onclick='beginFadeOutAnimation(); window.location.href = \"$link_href\"' title='".translate('(click to configure)',false)."'>\n";
+					echo "\t<tr onclick='beginFadeOutAnimation(); window.location.href = \"$link_href\"'>\n";
 					echo "\t\t<td>$link" . htmlspecialchars($interface['port']) . "$link_end</td>\n";
 					echo "\t\t<td>$link" . htmlspecialchars($interface['desc']) . "$link_end</td>\n";
 					echo "\t\t<td>$link<img src='" . getStatusImgPath($interface['stat']) . "'>$link_end</td>\n";

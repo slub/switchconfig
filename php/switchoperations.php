@@ -39,86 +39,95 @@ function getAllPortsOnSwitch($switch, $fullinfo = true, $voiceinfo = false) {
 	}
 
 	// parse ssh output
+	$linecounter = 0;
+	$columns = [];
 	foreach(explode("\n", $sh_int_status) as $if_line) {
-		if(trim($if_line) != ""  // ignore empty lines
-		&& startsWith($if_line, "Port") == false)  // ignore table head line
-		{
-			$_newport['port'] = trim(substr($if_line, 00, 10));
-			$_newport['altn'] = str_replace("Gi", "GigabitEthernet", $_newport['port']);
-			$_newport['desc'] = trim(substr($if_line, 10, 18));
-			$_newport['stat'] = trim(substr($if_line, 29, 13));
-			$_newport['vlan'] = trim(substr($if_line, 42, 05));
-			$_newport['dupl'] = trim(substr($if_line, 53, 07));
-			$_newport['spee'] = trim(substr($if_line, 60, 07));
-			$_newport['type'] = trim(substr($if_line, 67, 17));
-			$_newport['voip'] = "";
-			$_newport['errs'] = false;
-			$_newport['errt'] = "";
+		// ignore empty lines
+		if(trim($if_line) == "") continue;
+		$linecounter ++;
 
-			// get details from second command
-			$currentport = "";
-			if(!empty($sh_int_detail)) foreach(explode("\n", $sh_int_detail) as $if_line2) {
-				// new interface section starting
-				if(!startsWith($if_line2, " "))
-				$currentport = explode(" ", $if_line2)[0];
+		// parse table head line
+		if($linecounter == 1) {
+			$columns = parseIntStatusHead($if_line);
+			continue;
+		}
 
-				// if we are in the section of our current interface
-				if($currentport == $_newport['port'] || $currentport == $_newport['altn']) {
+		// parse port table
+		$_newport['port'] = trim(substr($if_line, $columns[0]['offset'], $columns[0]['length']));
+		$_newport['altn'] = str_replace("Gi", "GigabitEthernet", $_newport['port']);
+		$_newport['desc'] = trim(substr($if_line, $columns[1]['offset'], $columns[1]['length']));
+		$_newport['stat'] = trim(substr($if_line, $columns[2]['offset'], $columns[2]['length']));
+		$_newport['vlan'] = trim(substr($if_line, $columns[3]['offset'], $columns[3]['length']));
+		$_newport['dupl'] = trim(substr($if_line, $columns[4]['offset'], $columns[4]['length']));
+		$_newport['spee'] = trim(substr($if_line, $columns[5]['offset'], $columns[5]['length']));
+		$_newport['type'] = trim(substr($if_line, $columns[5]['offset']+$columns[5]['length']));
+		$_newport['voip'] = "";
+		$_newport['errs'] = false;
+		$_newport['errt'] = "";
 
-					// get full description
-					if(startsWith($if_line2, "  Description:"))
-					$_newport['desc'] = str_replace("  Description: ", "", $if_line2);
+		// get details from second command
+		$currentport = "";
+		if(!empty($sh_int_detail)) foreach(explode("\n", $sh_int_detail) as $if_line2) {
+			// new interface section starting
+			if(!startsWith($if_line2, " "))
+			$currentport = explode(" ", $if_line2)[0];
 
-					// line conatins reliability information
-					if(strpos($if_line2, "reliability") !== false) {
-						$rel_text = trim(explode(",", $if_line2)[0]);
-						$rel_values = explode(" ", $rel_text)[1];
-						$rel_curr = explode("/", $rel_values) [0];
+			// if we are in the section of our current interface
+			if($currentport == $_newport['port'] || $currentport == $_newport['altn']) {
 
-						if($rel_curr != 255) { // errors exist if reliability lower than 255
-							$_newport['errs'] = true;
-							$_newport['errt'] .= "\n" . trim($if_line2);
-						}
-					}
+				// get full description
+				if(startsWith($if_line2, "  Description:"))
+				$_newport['desc'] = str_replace("  Description: ", "", $if_line2);
 
-					// line conatins error information
-					if(strpos($if_line2, "error") !== false) {
+				// line conatins reliability information
+				if(strpos($if_line2, "reliability") !== false) {
+					$rel_text = trim(explode(",", $if_line2)[0]);
+					$rel_values = explode(" ", $rel_text)[1];
+					$rel_curr = explode("/", $rel_values) [0];
+
+					if($rel_curr != 255) { // errors exist if reliability lower than 255
+						$_newport['errs'] = true;
 						$_newport['errt'] .= "\n" . trim($if_line2);
 					}
 				}
-			}
 
-			// get more details from third command
-			$currentport = "";
-			if(!empty($sh_int_switchport)) foreach(explode("\n", $sh_int_switchport) as $if_line2) {
-				// new interface section starting
-				if(startsWith($if_line2, "Name: "))
-				$currentport = trim(str_replace("Name: ", "", $if_line2));
-
-				// if we are in the section of our current interface
-				if($currentport == $_newport['port'] || $currentport == $_newport['altn']) {
-
-					// get full description
-					if(startsWith($if_line2, "Voice VLAN: "))
-					$_newport['voip'] = trim(str_replace(["Voice VLAN: ", "(default)"], "", $if_line2));
-
+				// line conatins error information
+				if(strpos($if_line2, "error") !== false) {
+					$_newport['errt'] .= "\n" . trim($if_line2);
 				}
 			}
-
-			// add to result array
-			$interfaces[] = array(
-				'port' => $_newport['port'], // switchport
-				'desc' => $_newport['desc'], // description
-				'stat' => $_newport['stat'], // status
-				'vlan' => $_newport['vlan'], // vlan
-				'dupl' => $_newport['dupl'], // duplex
-				'spee' => $_newport['spee'], // speed
-				'type' => $_newport['type'], // type
-				'voip' => $_newport['voip'], // voip
-				'errs' => $_newport['errs'], // has errors (true|false)
-				'errt' => $_newport['errt'], // error text
-			);
 		}
+
+		// get more details from third command
+		$currentport = "";
+		if(!empty($sh_int_switchport)) foreach(explode("\n", $sh_int_switchport) as $if_line2) {
+			// new interface section starting
+			if(startsWith($if_line2, "Name: "))
+			$currentport = trim(str_replace("Name: ", "", $if_line2));
+
+			// if we are in the section of our current interface
+			if($currentport == $_newport['port'] || $currentport == $_newport['altn']) {
+
+				// get full description
+				if(startsWith($if_line2, "Voice VLAN: "))
+				$_newport['voip'] = trim(str_replace(["Voice VLAN: ", "(default)"], "", $if_line2));
+
+			}
+		}
+
+		// add to result array
+		$interfaces[] = array(
+			'port' => $_newport['port'], // switchport
+			'desc' => $_newport['desc'], // description
+			'stat' => $_newport['stat'], // status
+			'vlan' => $_newport['vlan'], // vlan
+			'dupl' => $_newport['dupl'], // duplex
+			'spee' => $_newport['spee'], // speed
+			'type' => $_newport['type'], // type
+			'voip' => $_newport['voip'], // voip
+			'errs' => $_newport['errs'], // has errors (true|false)
+			'errt' => $_newport['errt'], // error text
+		);
 	}
 
 	return $interfaces;
