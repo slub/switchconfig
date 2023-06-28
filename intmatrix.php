@@ -54,7 +54,7 @@ if(isset($_GET['refreshtableonly']) && $_GET['refreshtableonly'] == "1")
 		$statustext = "";
 		$onclickevent = "";
 		if($status != "none") {
-			$statustext = $portInfo['stat'] . " [VLAN " . $portInfo['vlan'] . "]";
+			$statustext = translate($portInfo['stat'], false) . " [VLAN " . $portInfo['vlan'] . "]";
 			if($portInfo['voip'] != "none" && $portInfo['voip'] != "")
 				$statustext .= " [VoIP " . explode(" ", $portInfo['voip'])[0] . "]";
 
@@ -85,7 +85,7 @@ if(isset($_GET['refreshtableonly']) && $_GET['refreshtableonly'] == "1")
 		echo "<td class='$status tooltip $htmlclass_additional' title='$title' $onclickevent>\n";
 		if($statustext != "") {
 			echo "<span class='tooltiptext'>" .
-			     "<div><b>" . $port . "</b> <span class='clickhint'>".translate('(click to configure)',false)."</span></div>" .
+			     "<div><b>" . $port . "</b></div>" .
 			     "<div>" . $statustext . "</div>" .
 			     "<div>" . htmlspecialchars($portInfo['desc']) . "</div>" .
 			     "<div>" . $errorinfo . "</div>" .
@@ -147,7 +147,7 @@ if(isset($_GET['refreshtableonly']) && $_GET['refreshtableonly'] == "1")
 					<img id='imgLoading' src='img/loading.svg'></img>
 					<img id='imgSwitch' src='img/switch.png'></img>
 				</div>
-				<?php translate('This page shows all ports and packet errors, arranged as on the device.'); ?>
+				<?php translate('This page shows all ports and packet errors, arranged as on the device. Click a port to configure it.'); ?>
 			</div>
 
 			<table width='100%' id='logintable'>

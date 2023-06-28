@@ -35,7 +35,6 @@ $_LANG['Start search on'] = 'Suche starten auf';
 $_LANG['New Search'] = 'Neue Suche';
 $_LANG['Default Description'] = 'Standardbezeichnung';
 $_LANG['Example'] = 'Beispiel';
-$_LANG['(click to configure)'] = '(Klicken zum Konfigurieren)';
 $_LANG['Packet Error Information (since last reboot):'] = 'Paketfehlerinformationen (seit letztem Neustart):';
 $_LANG['Invalid Port!'] = 'Ungültiger Port!';
 $_LANG['Change Password'] = 'Kennwort ändern';
@@ -67,7 +66,7 @@ $_LANG['Table'] = 'Tabelle';
 $_LANG['Refresh'] = 'Aktualisieren';
 $_LANG['Enable auto refresh'] = 'Automatisch aktualisieren';
 $_LANG['Disable auto refresh'] = 'Automatisches Aktualisieren deaktivieren';
-$_LANG['This page shows all ports and packet errors, arranged as on the device.'] = 'Diese Ansicht zeigt alle Ports und Paketfehler am selbigen (rot blinkend) grafisch an, angeordnet wie am Gerät.';
+$_LANG['This page shows all ports and packet errors, arranged as on the device. Click a port to configure it.'] = 'Diese Ansicht zeigt alle Ports und Paketfehler am selbigen (rot blinkend) grafisch an, angeordnet wie am Gerät. Klicken Sie auf einen Port, um ihn zu konfigurieren.';
 $_LANG['Internet Explorer and Microsoft Edge are not supportet.'] = 'Internet Explorer und Microsoft Edge werden nicht unterstützt.';
 $_LANG['This page provides a table overview for all ports with their settings.'] = 'Diese Ansicht bietet Ihnen einen tabellarischen Überblick über alle Ports mit deren Konfiguration und Status.';
 $_LANG['Please click on a button to open the map with the switches.'] = 'Klicken Sie auf einen Kartennamen, um die Karte mit den Switchen zu öffnen.';
@@ -85,3 +84,7 @@ $_LANG['The following special chars are not allowed!'] = 'Folgende Sonderzeichen
 $_LANG['The password cannot be empty'] = 'Das Kennwort darf nicht leer sein!';
 $_LANG['The passwords do not match!'] = 'Die Passwörter stimmen nicht überein!';
 $_LANG['Invalid MAC address'] = 'Ungültige MAC-Adresse';
+
+// port status text
+$_LANG['connected'] = 'verbunden';
+$_LANG['notconnect'] = 'nicht verbunden';

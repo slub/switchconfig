@@ -36,11 +36,6 @@
 	cursor: pointer;
 }
 
-.clickhint {
-	font-size: 90%;
-	opacity: 0.70;
-}
-
 .notconnect:hover, .connected:hover, .other:hover {
 	box-shadow: inset -2px -2px 8px rgba(255,255,255,0.45);
 }
