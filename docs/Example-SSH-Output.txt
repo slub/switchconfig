@@ -1,9 +1,7 @@
 SWITCH#sh int status
 
-Port      Name               Status       Vlan       Duplex  Speed Type
-Gi0/1     Your Text Here     notconnect   34           auto   auto 10/100/1000BaseTX
-Gi0/2                        connected    32         a-full   a-10 10/100/1000BaseTX
-Gi0/3                        connected    20         a-full   a-10 10/100/1000BaseTX
+Port         Name               Status       Vlan       Duplex  Speed Type
+Gi1/0/1      really cool port   connected    20         a-full a-1000 10/100/1000BaseTX
 ...
 
 
