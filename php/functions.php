@@ -78,35 +78,6 @@ function addMacSeparator($nakedMac) {
 	return $result;
 }
 
-function parseIntStatusHead($line) {
-	$position = 0;
-	$columnWidths = [];
-	$currentColumnWidth = 0;
-	$flag = false;
-	foreach(str_split(trim($line)) as $char) {
-		if($flag && $char != ' ' && $currentColumnWidth > 0) {
-			$title = trim(substr($line, $position, $currentColumnWidth));
-
-			// this is an ultra-ugly but necessary workaround, have a look at the original Cisco switch output, the "Speed" column is shifted by one char:
-			// Port         Name               Status       Vlan       Duplex  Speed Type
-			// Gi1/0/1      really cool port   connected    20         a-full a-1000 10/100/1000BaseTX
-			if($title == 'Duplex') {
-				$currentColumnWidth -= 1;
-			}
-
-			$columnWidths[] = ['title'=>$title, 'offset'=>$position, 'length'=>$currentColumnWidth];
-			$position += $currentColumnWidth;
-			$currentColumnWidth = 0;
-			$flag = false;
-		}
-		$currentColumnWidth ++;
-		if($char == ' ') {
-			$flag = true;
-		}
-	}
-	return $columnWidths;
-}
-
 /* Maps */
 function switchOnMapAvail($MAPS, $switch) {
 	foreach($MAPS as $currentmap) {
