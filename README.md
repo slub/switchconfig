@@ -38,7 +38,7 @@ Web application for managing cisco switches via SSH
 - Please only use HTTPS (except you are accessing the site only via localhost). Redirect all HTTP requests to HTTPS.
 - Keep your server always up to date.
 - Limit the access (via Apache config) to IP addresses that really need it.
-- Do not make this webapp availabe on the internet (to avoid brute force attacks) - configure your Apache and/or firewall to only serve this page inside your internal network.
+- Do not make this webapp available on the internet (to avoid brute force attacks) - configure your Apache and/or firewall to only serve this page inside your internal network.
 
 ## Other Recommendations
 - LDAP Authentication: You can configure your switches to ask a RADIUS server (which can for example authenticate against an LDAP/AD server) for authenticating the SSH connections.
