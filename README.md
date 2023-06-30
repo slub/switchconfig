@@ -46,6 +46,9 @@ Web application for managing cisco switches via SSH
 ## Compatibility Note
 This application parses the SSH response from your switch. Therefore, your switch has to produce output in a specific format as shown in __docs/Example-SSH-Output.txt__ in order to be compatible with this application. Please check if your switch supports the necessary commands (and syntax) in the example file and if it produces similar output.
 
+## Custom Webdesign
+To apply a custom (corporate) design, you can create a file `css/custom.css` which will be included in the HTML head automatically. With this, you can e.g. easily change the logo: `#logo { background-image: url('mylogo.png') }`.
+
 ## Feedback
 I'm interested if your switch model is compatible (or not) with this application. Please let me know on Github (make an Issue) or via email. Thanks!
 
