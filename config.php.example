@@ -42,7 +42,8 @@
 const ENABLE_PASSWORD_CHANGE = false; #(true|false)
 
 // decide if "wr mem" should be executed on the switch after each save procedure (this could take some seconds)
-const DO_WR_MEM = true; #(true|false)
+// NOT RECOMMENDED anymore - can lead to infinite loading times, see ADR #0001
+const DO_WR_MEM = false; #(true|false)
 
 // decide if POE should be enabled/disabled on the switchport (depending on VoIP selection)
 const DO_SET_POE = false; #(true|false)
