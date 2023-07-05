@@ -1,6 +1,7 @@
-Version 2.4.0.0 [Sieber] [06/2023]
+Version 2.4.0.0 [Sieber] [07/2023]
 - support for newer Cisco switches (changed int status table column width)
-- improved status icon
+- minor UI improvements, custom CSS support
+- "wr mem" not recommended anymore
 
 Version 2.3.0.0 [Sieber] [04/2023]
 - improved mac address search
