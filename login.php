@@ -2,11 +2,11 @@
 
 require_once('config.php');
 require_once('lang.php');
+require_once('php/session-options.php');
 
 
 $info = "";
 $infoClass = "";
-session_start();
 
 if(isset($_GET['logout'])) {
 
