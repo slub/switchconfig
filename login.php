@@ -68,6 +68,10 @@ if(isset($_GET['logout'])) {
 	<?php require('head.inc.php'); ?>
 	<script language='javascript' type='text/javascript' src='js/explode.js'></script>
 	<style>
+	#forkme {
+		position: absolute;
+		top: 0; right: 0;
+	}
 	@media only screen and (max-width: 620px) {
 		#logincontainer {
 			margin-top: 20px;
@@ -85,6 +89,8 @@ if(isset($_GET['logout'])) {
 		document.getElementById('password').readOnly = true;
 	}
 	</script>
+
+	<a id='forkme' href='https://github.com/slub/switchconfig'><img src='img/forkme.png'></a>
 
 	<div id='container'>
 		<h1 id='title'><div id='logo'></div></h1>

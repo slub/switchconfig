@@ -1,14 +1,10 @@
 <div id='footer'>
 	<div>
-		<a href='README.md' target='_blank'>Readme</a>
-		|
-		<a href='docs/Changelog.txt' target='_blank'>Changelog</a>
-		|
-		<a href='mailto:georg.sieber@slub-dresden.de'>?</a>
+		<a href='https://github.com/slub/switchconfig'><img src='webdesign-template/img/help.svg'></a>
 	</div>
 	<div>
 	</div>
-	<div>
-		<span class='version'>v2.4</span>
+	<div class='version'>
+		<a href='docs/Changelog.txt'>v2.4</a>
 	</div>
 </div>
