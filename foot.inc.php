@@ -5,6 +5,6 @@
 	<div>
 	</div>
 	<div class='version'>
-		<a href='docs/Changelog.txt'>v2.4</a>
+		<a href='docs/Changelog.txt'>v2.5</a>
 	</div>
 </div>

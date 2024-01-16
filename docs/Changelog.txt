@@ -1,3 +1,7 @@
+Version 2.5.0.0 [Sieber] [01/2024]
+- cookie secure flag
+- updated webdesign template
+
 Version 2.4.0.0 [Sieber] [07/2023]
 - support for newer Cisco switches (changed int status table column width)
 - minor UI improvements, custom CSS support
