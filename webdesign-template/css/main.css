@@ -239,13 +239,23 @@ a.slubbutton[disabled]:active {
 .form-row select, .form-row button {
 	width: 				100%;
 }
-.form-row img {
+.form-row.icon img {
 	pointer-events: 	none;
 	position: 			absolute;
 	top: 				11px;
-	right: 				14px;
+	left: 				14px;
 	width: 				22px;
 	height: 			22px;
+}
+.form-row.icon img.right {
+	pointer-events: 	auto;
+	cursor: 			pointer;
+	left: 				auto;
+	right: 				14px;
+}
+.form-row.icon input {
+	padding-left: 45px;
+	padding-right: 45px;
 }
 .form-row textarea {
 	resize: vertical;
@@ -642,11 +652,14 @@ table.styled.alternating tr:nth-child(even) td {
 	#splash {
 		padding: 15px;
 	}
-	.form-row img {
+	.form-row.icon img {
 		top: 10px;
-		right: 10px;
+		left: 10px;
 		height: 20px;
 		width: 20px;
+	}
+	.form-row.icon img.right {
+		right: 10px;
 	}
 	.slubbutton {
 		min-width: 75px;

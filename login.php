@@ -66,7 +66,8 @@ if(isset($_GET['logout'])) {
 <head>
 	<title><?php translate('Switchconfig'); ?> - <?php translate('Log In'); ?></title>
 	<?php require('head.inc.php'); ?>
-	<script language='javascript' type='text/javascript' src='js/explode.js'></script>
+	<script type='text/javascript' src='webdesign-template/js/main.js'></script>
+	<script type='text/javascript' src='js/explode.js'></script>
 	<style>
 	#forkme {
 		position: absolute;
@@ -117,13 +118,14 @@ if(isset($_GET['logout'])) {
 			<?php } ?>
 
 			<form method='POST' action='login.php' name='loginform' id='frmLogin' onsubmit='beginFadeOutAnimation();'>
-				<div class='form-row'>
+				<div class='form-row icon'>
 					<input type='text' id='username' name='username' placeholder='<?php translate("Username"); ?>' autofocus='true' />
 					<img src='webdesign-template/img/person.svg'>
 				</div>
-				<div class='form-row'>
+				<div class='form-row password icon'>
 					<input type='password' id='password' name='password' placeholder='<?php translate("Password"); ?>' />
 					<img src='webdesign-template/img/key.svg'>
+					<img src='webdesign-template/img/eye.svg' class='right showpassword' title='Kennwort anzeigen'>
 				</div>
 				<div class='form-row'>
 					<button id='submitLogin' class='slubbutton'><?php translate("Log In"); ?></button>
