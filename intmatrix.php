@@ -51,8 +51,10 @@ if(isset($_GET['refreshtableonly']) && $_GET['refreshtableonly'] == "1")
 		$status = getPortStatus($interfaces, $port);
 
 		// build text, title and onclick event
+		$title = "";
 		$statustext = "";
 		$onclickevent = "";
+		$htmlclass_additional = "";
 		if($status != "none") {
 			$statustext = translate($portInfo['stat'], false) . " [VLAN " . $portInfo['vlan'] . "]";
 			if($portInfo['voip'] != "none" && $portInfo['voip'] != "")
@@ -62,7 +64,6 @@ if(isset($_GET['refreshtableonly']) && $_GET['refreshtableonly'] == "1")
 
 			// set css class "error" if errors were reported
 			$title = translate("Packet Error Information (since last reboot):",false) . htmlspecialchars($portInfo['errt']);
-			$htmlclass_additional = "";
 			$errorinfo = "";
 			if($portInfo['errs'] == true) {
 				$nIoError ++;
@@ -155,14 +156,16 @@ if(isset($_GET['refreshtableonly']) && $_GET['refreshtableonly'] == "1")
 					<table id='matrix' class='matrix'>
 <?php } ?>
 
-						<?php ##### for small 10-port switches #####
-						if(getPortStatus($interfaces, "Gi0/1") != "none") {
-							require('php/intmatrix-layouts/10port.php');
-						}
-						?>
-
-						<?php ##### for regular nexus switches (up to 3 stacked) #####
-						if(getPortStatus($interfaces, "Gi1/0/1") != "none") {
+						<?php
+						if(count($interfaces) <= 10) {
+							// for small 10-port switches
+							if(getPortStatus($interfaces, 'Gi0/1') != 'none') {
+								require('php/intmatrix-layouts/10port.php');
+							} else {
+								require('php/intmatrix-layouts/10port2.php');
+							}
+						} else if(getPortStatus($interfaces, 'Gi1/0/1') != 'none') {
+							// for regular nexus switches (up to 3 stacked)
 							require('php/intmatrix-layouts/48port.php');
 						}
 						?>
