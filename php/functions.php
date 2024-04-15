@@ -36,8 +36,12 @@ function removeInvalidChars($string) {
 }
 
 function startsWith($haystack, $needle) {
-	$length = strlen($needle);
-	return (substr($haystack, 0, $length) === $needle);
+	if(!is_array($needle)) $needle = [$needle];
+	foreach($needle as $n) {
+		$length = strlen($n);
+		if(substr($haystack, 0, $length) === $n) return true;
+	}
+	return false;
 }
 
 function endsWith($haystack, $needle) {

@@ -49,10 +49,12 @@ $cSwitch = getSwitchByAddr($switch);
 $cmdOutput = "";
 $info = "";
 $infoClass = "";
-if($cSwitch != null && isset($_POST['action']) && $_POST['action'] == "SETVALUES") {
-	$cmdOutput = setValues($cSwitch['addr'], $port, $vlan, $desc, $voip);
-	$info = translate('New settings sent to switch.', false);
-	$infoClass = "ok";
+if($cSwitch != null && isset($_POST['action']) && $_POST['action'] === 'SETVALUES') {
+	if(startsWith($port, VISIBLE_PORTS) && !startsWith($port, HIDDEN_PORTS)) {
+		$cmdOutput = setValues($cSwitch['addr'], $port, $vlan, $desc, $voip);
+		$info = translate('New settings sent to switch.', false);
+		$infoClass = "ok";
+	}
 }
 
 /*** READ PORT INFO ***/
@@ -186,11 +188,9 @@ if($cSwitch != null) {
 						$status = "";
 						$queried_port_found = false;
 						foreach($interfaces as $interface) {
-							if(startsWith($interface['port'], "Gi") // only show "normal" ports
-								&& startsWith($interface['port'], "Gi1/1") == false
-								&& startsWith($interface['port'], "Gi2/1") == false
-								&& $interface['vlan'] != "trunk" // and don't show trunk ports
-							) {
+							if($interface['vlan'] != 'trunk' // don't show trunk ports
+							&& startsWith($interface['port'], VISIBLE_PORTS) // show only desired ports
+							&& !startsWith($interface['port'], HIDDEN_PORTS)) {
 								$selected = "";
 								if($interface['port'] == $port) {
 									$selected = "selected";

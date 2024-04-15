@@ -55,6 +55,10 @@ const VOICE_VLAN = -1; # TODO: replace with your voice VLAN ID number
 // hint to show on mouse hover on the port description field
 const PORT_DESCRIPTION_HINT = '';
 
+// set which port types should be visible/available for configuring and which should be hidden
+const VISIBLE_PORTS = ['Gi', 'Fa'];
+const HIDDEN_PORTS  = ['Gi1/1', 'Gi2/1'];
+
 // defines all on the webinterface visible VLANs
 const VISIBLE_VLAN = [
 	['id' => 'disabled', 'name' => '[----]  DISABLED'], # special entry: disables the port
