@@ -27,9 +27,9 @@ function getSnippetById($id) {
 function removeInvalidChars($string) {
 	// this function removes chars which cannot be set as port description on the switch
 	// replace german umlauts
-	$string = str_replace("Ä", "Ae", $string); $string = str_replace("Ö", "Oe", $string); $string = str_replace("Ü", "Ue", $string);
-	$string = str_replace("ä", "ae", $string); $string = str_replace("ö", "oe", $string); $string = str_replace("ü", "ue", $string);
-	$string = str_replace("ß", "ss", $string);
+	$string = str_replace('Ä', 'Ae', $string); $string = str_replace('Ö', 'Oe', $string); $string = str_replace('Ü', 'Ue', $string);
+	$string = str_replace('ä', 'ae', $string); $string = str_replace('ö', 'oe', $string); $string = str_replace('ü', 'ue', $string);
+	$string = str_replace('ß', 'ss', $string);
 	// remove all other chars
 	// except A-Z, a-z, 0-9, Spaces, -, _, ., / (for interface name, e.g. Gi1/0/1)
 	return preg_replace('/[^A-Za-z0-9\-\/\_\.\ ]/', '', $string);
@@ -106,11 +106,11 @@ function getPort($interfaces, $port) {
 function getPortStatus($interfaces, $port) {
 	foreach($interfaces as $iface) {
 		if(isset($iface['port']) && $iface['port'] == $port) {
-			if($iface['stat'] == "connected" || $iface['stat'] == "notconnect")
+			if($iface['stat'] == 'connected' || $iface['stat'] == 'notconnect')
 				return $iface['stat'];
 			else
-				return "other";
+				return 'other';
 		}
 	}
-	return "none";
+	return 'none';
 }

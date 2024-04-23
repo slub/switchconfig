@@ -157,16 +157,25 @@ if(isset($_GET['refreshtableonly']) && $_GET['refreshtableonly'] == "1")
 <?php } ?>
 
 						<?php
+						// for small 10-port switches
 						if(count($interfaces) <= 10) {
-							// for small 10-port switches
 							if(getPortStatus($interfaces, 'Gi0/1') != 'none') {
 								require('php/intmatrix-layouts/10port.php');
 							} else {
-								require('php/intmatrix-layouts/10port2.php');
+								require('php/intmatrix-layouts/10port-stacked.php');
 							}
-						} else if(getPortStatus($interfaces, 'Gi1/0/1') != 'none') {
-							// for regular nexus switches (up to 3 stacked)
-							require('php/intmatrix-layouts/48port.php');
+						}
+						// for single fast ethernet switches
+						else if(getPortStatus($interfaces, 'Fa0/1') != 'none') {
+							require('php/intmatrix-layouts/48port-fa.php');
+						}
+						// for single gigabit switches
+						else if(getPortStatus($interfaces, 'Gi0/1') != 'none') {
+							require('php/intmatrix-layouts/48port-gi.php');
+						}
+						// for stacked gigabit switches (up to 3 switches)
+						else if(getPortStatus($interfaces, 'Gi1/0/1') != 'none') {
+							require('php/intmatrix-layouts/48port-gi-stacked.php');
 						}
 						?>
 
