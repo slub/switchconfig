@@ -5,15 +5,15 @@ require_once('lang.php');
 require_once('php/session-options.php');
 
 
-$info = "";
-$infoClass = "";
+$info = '';
+$infoClass = '';
 
-if(isset($_GET['logout'])) {
+if(isset($_SESSION['username']) && isset($_GET['logout'])) {
 
 	// sign out
 	session_unset();
 	session_destroy();
-	$infoClass = "ok";
+	$infoClass = 'ok';
 	$info = translate('Successfully logged out', false);
 
 } elseif(isset($_POST['username']) && isset($_POST['password'])) {
@@ -27,29 +27,37 @@ if(isset($_GET['logout'])) {
 				$_SESSION['username'] = $_POST['username'];
 				$_SESSION['password'] = $_POST['password'];
 				$_SESSION['last_activity'] = time(); // set last activity time stamp for timeout
-				header('Location: index.php'); exit(); break;
+
+				// redirect to desired page
+				$redirect = 'index.php';
+				if(!empty($_GET['redirect'])
+				&& substr($_GET['redirect'], 0, 1) === '/') { // only allow relative URLs beginning with '/', do not redirect to other websites!
+					$redirect = $_GET['redirect'];
+				}
+				header('Location: '.$redirect);
+				die('Happy configuring!');
 			}
 			break; // only test first switch (testing all switches would take too long)
 		}
 	}
 
 	// error message - login not valid
-	$infoClass = "error";
+	$infoClass = 'error';
 	$info = translate('Login failed', false);
 
 } elseif(isset($_GET['reason']) && $_GET['reason'] == 'unavailable') {
 
-	$infoClass = "info";
+	$infoClass = 'info';
 	$info = translate('Maintenance Mode - Please try again later.', false);
 
 } elseif(isset($_GET['reason']) && $_GET['reason'] == 'timeout') {
 
-	$infoClass = "warn";
+	$infoClass = 'warn';
 	$info = translate('Session timed out. Please log in again.', false);
 
 } elseif(isset($_GET['reason']) && $_GET['reason'] == 'notloggedin') {
 
-	$infoClass = "warn";
+	$infoClass = 'warn';
 	$info = translate('Please log in first.', false);
 
 } elseif(isset($_SESSION['username']) && isset($_SESSION['password'])) {
@@ -117,18 +125,18 @@ if(isset($_GET['logout'])) {
 				<div class='infobox <?php echo $infoClass; ?>'><?php echo $info; ?></div>
 			<?php } ?>
 
-			<form method='POST' action='login.php' name='loginform' id='frmLogin' onsubmit='beginFadeOutAnimation();'>
+			<form method='POST' name='loginform' id='frmLogin' onsubmit='beginFadeOutAnimation();'>
 				<div class='form-row icon'>
-					<input type='text' id='username' name='username' placeholder='<?php translate("Username"); ?>' autofocus='true' />
+					<input type='text' id='username' name='username' placeholder='<?php translate('Username'); ?>' autofocus='true' />
 					<img src='webdesign-template/img/person.svg'>
 				</div>
 				<div class='form-row password icon'>
-					<input type='password' id='password' name='password' placeholder='<?php translate("Password"); ?>' />
+					<input type='password' id='password' name='password' placeholder='<?php translate('Password'); ?>' />
 					<img src='webdesign-template/img/key.svg'>
 					<img src='webdesign-template/img/eye.svg' class='right showpassword' title='Kennwort anzeigen'>
 				</div>
 				<div class='form-row'>
-					<button id='submitLogin' class='slubbutton'><?php translate("Log In"); ?></button>
+					<button id='submitLogin' class='slubbutton'><?php translate('Log In'); ?></button>
 				</div>
 			</form>
 

@@ -1,8 +1,8 @@
 <?php
 
 /*** MAINTENANCE MESSAGE ***/
-const MAINT = false;
-const MAINT_IP = "194.95.144.21";
+const MAINT    = false;
+const MAINT_IP = '194.95.144.21';
 
 if(MAINT == true && $_SERVER['REMOTE_ADDR'] != MAINT_IP) {
 	header('Location: login.php?reason=unavailable');
@@ -13,31 +13,44 @@ if(MAINT == true && $_SERVER['REMOTE_ADDR'] != MAINT_IP) {
 /*** START SESSION ***/
 require_once(__DIR__.'/session-options.php');
 
+
 /*** AUTH CHECK ***/
-/* CHECK IF CLIENT IS AUTHENTICATED */
 if(!(isset($_SESSION['username']) && isset($_SESSION['password']))) {
-	/* IF NOT: REDIRECT TO LOGIN PAGE AND DO NOT EXECUTE CURRENT SCRIPT */
-	if($SUPRESS_NOTLOGGEDIN_MESSAGE == true) {
-		header('Location: login.php');
+	// redirect to login page
+	if(empty($SUPRESS_NOTLOGGEDIN_MESSAGE)) {
+		redirectToLogin('notloggedin');
 	} else {
-		header('Location: login.php?reason=notloggedin');
+		redirectToLogin();
 	}
 	exit();
 }
 
-/*** TIMEOUT HANDLER ***/
-/* TIMEOUT VALUES */
-$TIMEOUT_MIN = 15; // mit Absicht ziemlich restriktiv, falls man den Switch mal 'von unterwegs' konfiguriert
 
-/* CHECK IF SESSION IS TIMED OUT */
+/*** TIMEOUT HANDLER ***/
+$TIMEOUT_MIN = 15;
+
+// check if session is timed out
 if(isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > ($TIMEOUT_MIN * 60))) {
-	/* SESSION TIMED OUT! */
 	session_unset();     // unset $_SESSION variable for the run-time
 	session_destroy();   // destroy session data in storage
 
-	/* REDIRECT TO LOGIN PAGE */
-	header('Location: login.php?reason=timeout'); exit();
+	// redirect to login page
+	redirectToLogin('timeout');
 } else {
 	// update last activity time stamp
 	$_SESSION['last_activity'] = time();
+}
+
+
+function redirectToLogin($reason=null) {
+	$params = [];
+	if($reason) {
+		$params['reason'] = $reason;
+	}
+	if(!empty($_SERVER['REQUEST_URI']) && substr($_SERVER['REQUEST_URI'], 0, 1) === '/') {
+		$params['redirect'] = $_SERVER['REQUEST_URI'];
+	}
+	header('HTTP/1.1 401 Not Authorized');
+	header('Location: login.php'.(empty($params) ? '' : '?').http_build_query($params));
+	die();
 }
