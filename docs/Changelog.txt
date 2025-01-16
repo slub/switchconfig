@@ -1,3 +1,10 @@
+Version 2.6.0.0 [Sieber] [01/2025]
+- redirect to desired page after login
+- fixed login when logout was done before
+- support for new 10port switches
+- visible/hidden ports can now be configured
+- port matrix: support for single (non-stacked) switches
+
 Version 2.5.0.0 [Sieber] [01/2024]
 - cookie secure flag
 - updated webdesign template
