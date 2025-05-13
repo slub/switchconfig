@@ -1,5 +1,5 @@
 # Switchconfig
-Web application for managing cisco switches via SSH
+Web application for managing Cisco switches via SSH
 
 ## Features
 - assign description, VLAN and VoIP-capability to a switchport
@@ -14,13 +14,12 @@ Web application for managing cisco switches via SSH
 
 ## Dependencies
 - Server
-  - linux-based operating system (Debian/Ubuntu recommended)
-  - apache2 webserver
-  - PHP 5 or 7 with php-ssh2 package
+  - Linux-based operating system (Debian/Ubuntu recommended)
+  - Apache2 webserver
+  - PHP 7 or 8 with `php-ssh2` package
 - Client
-  - Browser with JavaScript enabled
-  - Chromium or Firefox recommended
-  - Internet Explorer is not supported
+  - Chromium-based browser or Firefox
+  - JavaScript enabled
 
 ## Setup
 0. Install packages (example for Debian): `apt install apache2 php php-ssh2`
