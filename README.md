@@ -51,6 +51,13 @@ To apply a custom (corporate) design, you can create a file `css/custom.css` whi
 ## Feedback
 I'm interested if your switch model is compatible (or not) with this application. Please let me know on Github (make an Issue) or via email. Thanks!
 
+## Docker
+Docker is currently used/recommended for development/testing purposes only.
+```
+docker-compose build --no-cache
+docker-compose up
+```
+
 ## Screenshots
 ![Main Page](img/screenshot/main.png)
 ![Port List](img/screenshot/list.png)
