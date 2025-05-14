@@ -54,8 +54,9 @@ I'm interested if your switch model is compatible (or not) with this application
 ## Docker
 Docker is currently used/recommended for development/testing purposes only.
 ```
-docker-compose build --no-cache
-docker-compose up
+docker compose down
+docker compose build --no-cache
+docker compose up
 ```
 
 ## Screenshots
