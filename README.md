@@ -22,16 +22,26 @@ Web application for managing Cisco switches via SSH
   - JavaScript enabled
 
 ## Setup
-0. Install packages (example for Debian): `apt install apache2 php php-ssh2`
-1. Copy all files into your webserver directory
-2. Make sure "AllowOverride All" is set in your Apache config for the webserver directory, in order to deny access to the "maps" directory for non-authenticated users (see .htaccess file in this directory).
-3. Create/Edit the config file __config.php__ (please refer to the explanation and example in the file __config.php.example__)
+1. Install packages (example for Debian): `apt install apache2 php php-ssh2`
+2. Copy all files into your webserver directory
+3. Make sure `AllowOverride All` is set in your Apache config for the webserver directory, in order to deny access to the "maps" directory for non-authenticated users (see `.htaccess` file in this directory).
+4. Create/Edit the config file `config.php` (please refer to the explanation and example in the file `config.php.example`)
    - add the vlans you need to the array __VISIBLE_VLAN__
    - add the switches you want to manage to the array __SWITCHES__ (at least one)
    - (optional) set the __VOICE_VLAN__ (integer)
    - (optional) enable the password change feature
    - (optional) create maps using the array __MAPS__
-4. Open __index.php__ in your browser, log in with an SSH account on your switch and your LDAP account if configured.
+5. Open `index.php` in your browser, log in with an SSH account on your switch and your LDAP account if configured.
+
+## Docker
+Docker is currently used/recommended for development/testing purposes only.
+
+Create your config file `config.php` as described above, the execute:
+```
+docker compose down
+docker compose build --no-cache
+docker compose up
+```
 
 ## Hardening Recommendations
 - Please only use HTTPS (except you are accessing the site only via localhost). Redirect all HTTP requests to HTTPS.
@@ -43,21 +53,13 @@ Web application for managing Cisco switches via SSH
 - LDAP Authentication: You can configure your switches to ask a RADIUS server (which can for example authenticate against an LDAP/AD server) for authenticating the SSH connections.
 
 ## Compatibility Note
-This application parses the SSH response from your switch. Therefore, your switch has to produce output in a specific format as shown in __docs/Example-SSH-Output.txt__ in order to be compatible with this application. Please check if your switch supports the necessary commands (and syntax) in the example file and if it produces similar output.
+This application parses the SSH response from your switch. Therefore, your switch has to produce output in a specific format as shown in `docs/Example-SSH-Output.txt` in order to be compatible with this application. Please check if your switch supports the necessary commands (and syntax) in the example file and if it produces similar output.
 
 ## Custom Webdesign
 To apply a custom (corporate) design, you can create a file `css/custom.css` which will be included in the HTML head automatically. With this, you can e.g. easily change the logo: `#logo { background-image: url('mylogo.png') }`.
 
 ## Feedback
 I'm interested if your switch model is compatible (or not) with this application. Please let me know on Github (make an Issue) or via email. Thanks!
-
-## Docker
-Docker is currently used/recommended for development/testing purposes only.
-```
-docker compose down
-docker compose build --no-cache
-docker compose up
-```
 
 ## Screenshots
 ![Main Page](img/screenshot/main.png)
