@@ -30,10 +30,13 @@ if(isset($_SESSION['username']) && isset($_GET['logout'])) {
 
 				// redirect to desired page
 				$redirect = 'index.php';
-				if(!empty($_GET['redirect'])
-				&& substr($_GET['redirect'], 0, 1) === '/') { // only allow relative URLs beginning with '/', do not redirect to other websites!
+				// only allow local absolute paths; browsers can treat backslashes as slashes
+				if(isset($_GET['redirect']) && is_string($_GET['redirect'])
+				&& substr($_GET['redirect'], 0, 1) == '/'
+				&& substr($_GET['redirect'], 0, 2) != '//'
+				&& strpos($_GET['redirect'], '\\') === false
+				&& !preg_match('/[\x00-\x20\x7f]/', $_GET['redirect']))
 					$redirect = $_GET['redirect'];
-				}
 				header('Location: '.$redirect);
 				die('Happy configuring!');
 			}
